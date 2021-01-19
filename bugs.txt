@@ -1,0 +1,31 @@
+
+videos display design (limited character passing in description)
+
+magazine view
+
+remove console.log
+
+add loading 
+
+api change
+
+new homepage
+
+magzine design
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+

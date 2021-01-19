@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Organiser</title>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0px;
+    }
+  </style>
+</head>
+<body style="height: 100%">
+  <div id="viewer" style="width: 100%; height: 100%; "></div>
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      const config = { 
+        documentId: 'bc6a92ef-b1b3-47b4-9c0b-5f545848011c',
+        darkMode: true
+      };
+
+      CloudPDF(config, document.getElementById('viewer')).then((instance) => {
+        instance.setAppBarColored(true)
+      });
+    });
+  </script>
+ <script type="text/javascript" src="./js/viewer.min.js?0e91f239215aff5c29b7"></script></body>
+</html>
