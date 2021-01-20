@@ -5,7 +5,7 @@ magazine view
 
 remove console.log
 
-add loading 
+ 
 
 api change
 
