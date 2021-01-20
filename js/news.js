@@ -67,7 +67,7 @@ function newsDisp(){
                });
             
             });
-            setTimeout(hideLoader,4000);
+            setTimeout(hideLoader,3000);
         
             }
                 
