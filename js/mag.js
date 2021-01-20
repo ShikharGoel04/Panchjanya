@@ -1,4 +1,6 @@
-
+function hideLoader() {
+    $('#loading').hide();
+}
 window.onload=function(){
     document.getElementById("loader").style.display='block';
     var b=baseUrl();

@@ -1,3 +1,6 @@
+function hideLoader() {
+    $('#loading').hide();
+}
 function formatDate (input) {
     var trimmedString=input.substring(0,10);
     var datePart = trimmedString.split("-",3),
