@@ -1,3 +1,11 @@
+function formatDate (input) {
+    var trimmedString=input.substring(0,10);
+    var datePart = trimmedString.split("-",3),
+    year = datePart[0], // get only two digits
+    month = datePart[1],
+     day = datePart[2];
+    return day+'/'+month+'/'+year;
+  }
 window.onload=function(){
 if(localStorage.getItem("index") === null)
 {
@@ -29,7 +37,8 @@ else if(localStorage.getItem("index"))
             newhtml = newhtml.replace('%i%',i);
             newhtml=newhtml.replace('%imgsrc%',data['news'][i]['image']);
             newhtml=newhtml.replace('%data%',data);
-            newhtml = newhtml.replace('%date%',data['news'][i]['date']);
+            var dateConvert=formatDate(data['news'][i]['date']);
+                newhtml = newhtml.replace('%date%',dateConvert);
             newhtml = newhtml.replace('%author%',data['news'][i]['author']);
             document.querySelector('.news-a').insertAdjacentHTML('beforeend' , newhtml);
            

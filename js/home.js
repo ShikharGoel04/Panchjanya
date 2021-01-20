@@ -1,6 +1,16 @@
 function hideLoader() {
     $('#loading').hide();
 }
+
+function formatDate (input) {
+    var trimmedString=input.substring(0,10);
+    var datePart = trimmedString.split("-",3),
+    year = datePart[0], // get only two digits
+    month = datePart[1],
+     day = datePart[2];
+    return day+'/'+month+'/'+year;
+  }
+
 function newsHome(){
     
       
@@ -22,7 +32,9 @@ function newsHome(){
                 newhtml = newhtml.replace('%content%',data['news'][i]['content']);
                 newhtml=newhtml.replace('%imgsrc%',data['news'][i]['imageUrl']);
                 console.log(data['news'][i]['imageUrl']);
-                newhtml = newhtml.replace('%date%',data['news'][i]['date']);
+                var dateConvert=formatDate(data['news'][i]['date']);
+                newhtml = newhtml.replace('%date%',dateConvert);
+                    newhtml = newhtml.replace('%date%',dateConvert);
                 newhtml = newhtml.replace('%author%',data['news'][i]['author']);
                 document.querySelector('.news-add').insertAdjacentHTML('beforeend' , newhtml);
                 setTimeout(3000);
