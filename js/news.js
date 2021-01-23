@@ -31,7 +31,11 @@ function newsDisp(){
               
             })
              .then((response) => response.json())
-             .then((data) => {
+             .then((dataObj) => {
+                localStorage.setItem('mystring', LZString.compress(JSON.stringify(dataObj)));
+                var str = LZString.decompress(localStorage.getItem('mystring'));
+                 var data=JSON.parse(str);
+                 console.log(data['news'][0]['content']);
                 for(const i in data['news'])
                 {
                     var disp;

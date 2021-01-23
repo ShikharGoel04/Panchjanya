@@ -100,6 +100,37 @@ hideButton();
 		 window.localStorage.setItem("access_token", responseJson.access_token);
 		loginShow();
 		window.location="index.html";
+
+
+		var bearer = "Bearer " + localStorage.getItem("access_token");
+			var b=baseUrl();
+			   fetch(b+'profile/profile',{
+				   method: 'GET',
+				   headers:{
+					   Authorization:bearer
+				   }
+			 
+		   })
+			.then((response) => response.json())
+			.then((data) => {
+			 
+						   var orgSub=data['user']['is_orgSubscribed'];
+						   var panSub=data['user']['is_pncSubscribed'];
+						   console.log(data['user']['is_orgSubscribed']);
+						   if(orgSub || panSub)
+						   {
+							window.localStorage.setItem("magsub",1);
+							window.location="index.html";
+						   }
+						   else{
+							 window.localStorage.setItem("magsub",0);
+							 window.location="index.html";
+						   }
+
+			   })
+			   .catch((error) => {
+				   console.log("reset client error-------",error);
+			  });
 		 
 		}
 		else
@@ -142,14 +173,18 @@ hideButton();
 		console.log(access_token);
 		if(access_token)
 		{
-			window.location="magazine.html";
+			var mag_sub=localStorage.getItem("magsub");
+			if(mag_sub==1){
+				window.location="magazine.html";
+			}
+			else if(mag_sub==0){
+				alert("Please Subscribe!");
+			}
 		}
 		else
 		{
 			alert("Please login first");
 		}
-		
-		
 	}
 
 	function news()
@@ -164,6 +199,25 @@ hideButton();
 			alert("Please login first");
 		}
 	}
+
+
+	function subscription()
+	{
+		var access_token=localStorage.getItem("access_token");
+		console.log(access_token);
+		if(access_token)
+		{
+			window.location="subscription.html";
+		}
+		else
+		{
+			alert("Please login first");
+		}
+		
+		
+	}
+
+
 	function logout()
 	{
 		 localStorage.clear();
