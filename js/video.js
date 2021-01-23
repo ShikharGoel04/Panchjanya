@@ -8,7 +8,7 @@ function hideLoader() {
     $('#loading').hide();
 }
 window.onload=function(){
-    document.getElementById("loader").style.display='block';
+
     if(localStorage.getItem("access_token") === null)
     {
 		window.location="index.html";

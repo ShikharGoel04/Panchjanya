@@ -5,7 +5,6 @@ function loginShow()
     {
 		document.getElementById("login").style.display='block';
         document.getElementById("logout").style.display='none';
-
 	}
 	else if(localStorage.getItem("access_token"))
     {
@@ -14,7 +13,9 @@ function loginShow()
     }
  
 }
-
+function hideLoader() {
+    $('#loading').hide();
+}
 function showButton(){
 	document.getElementById("button").style.display='block';
 	document.getElementById("otp1").style.display='block';
@@ -41,8 +42,19 @@ function authenticate()
 		alert("Enter valid 10 digit phone number");	
 	}
 	else
-	{
-	console.log(ph);
+	{	
+		var p='91';
+		var pho=p.concat(ph);
+		console.log(pho);
+		// p=p+'9';
+		// p=p+'1';
+		// k=0;
+		// for(i=2;i<12;i++)
+		// {
+		// 	p+=ph[k];
+		// 	k++
+		// }
+	// console.log(p);
 	//e.preventDefault();
 	fetch(b+'profile/register',{
 		method: 'POST',
@@ -51,8 +63,8 @@ function authenticate()
 			'Content-Type':'application/json'
 		},
 		body: JSON.stringify({
-    username:ph,
-    phone:ph,
+    username:pho,
+    phone:pho,
   }),
    credentials: "same-origin"
 })
@@ -77,6 +89,9 @@ hideButton();
 		var phone=document.getElementById("phone");
 		
 		var status;
+		var p='91';
+		var pho=p.concat(phone.value);
+		console.log(pho);
 		//e.preventDefault();
 		fetch(b+'profile/login',{
 			method: 'POST',
@@ -85,7 +100,7 @@ hideButton();
 				'Content-Type':'application/json'
 			},
 			body: JSON.stringify({
-		username: phone.value,
+		username: pho,
 		password: otp1.value
 	  }),
 	   credentials: "same-origin"
@@ -97,9 +112,50 @@ hideButton();
 		{
 		// const token=btoa(responseJson.access_token);
 		//  console.log(token);
+		document.getElementById("loading").style.display='block';
 		 window.localStorage.setItem("access_token", responseJson.access_token);
-		loginShow();
-		window.location="index.html";
+		 
+		// loginShow();
+
+
+
+
+			var bearer = "Bearer " + localStorage.getItem("access_token");
+			var b=baseUrl();
+			   fetch(b+'profile/profile',{
+				   method: 'GET',
+				   headers:{
+					   Authorization:bearer
+				   }
+			 
+		   })
+			.then((response) => response.json())
+			.then((data) => {
+			 
+						   var orgSub=data['user']['is_orgSubscribed'];
+						   var panSub=data['user']['is_pncSubscribed'];
+						   if(orgSub || panSub)
+						   {
+							window.localStorage.setItem("magsub",1);
+							window.location="news.html";
+						   }
+						   else{
+							 window.localStorage.setItem("magsub",0);
+							 window.location="news.html";
+						   }
+
+			   
+			   })
+			   .catch((error) => {
+				   console.log("reset client error-------",error);
+			  });
+
+
+
+
+
+		/* have to fetch profile api here and store it on local storage   */
+
 		 
 		}
 		else
@@ -142,7 +198,14 @@ hideButton();
 		console.log(access_token);
 		if(access_token)
 		{
-			window.location="magazine.html";
+			var mag_sub=localStorage.getItem("magsub");
+			if(mag_sub==1){
+				window.location="magazine.html";
+			}
+			else if(mag_sub==0){
+				alert("Please Subscribe!");
+			}
+			
 		}
 		else
 		{
@@ -164,13 +227,28 @@ hideButton();
 			alert("Please login first");
 		}
 	}
+
+	function subscription()
+	{
+		var access_token=localStorage.getItem("access_token");
+		console.log(access_token);
+		if(access_token)
+		{
+			window.location="subscription.html";
+		}
+		else
+		{
+			alert("Please login first");
+		}
+		
+		
+	}
 	function logout()
 	{
 		 localStorage.clear();
 		
 		 window.location="index.html";
-		 loginShow();
-		//  window.localStorage.setItem("loginShow","true");
+		//  loginShow();
 		 
 	}
 

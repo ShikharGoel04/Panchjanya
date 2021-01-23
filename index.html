@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Panchjanya</title>
+  <title>organiser</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="./js/authenticate.js"></script>
-  <script src="./js/home.js"></script>
-  <script src="./js/number.js"></script>
   <script src="./js/baseUrl.js"></script>
   <link rel="stylesheet" href="./css/newloader.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -18,24 +16,29 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <script src="https://kit.fontawesome.com/08e3572502.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="./css/newloader.css">
+  <link rel="stylesheet" href="./css/styles.css">
+  <link rel="stylesheet" href="./css/loader.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/08e3572502.js" crossorigin="anonymous"></script>
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Bitter:ital@1&display=swap" rel="stylesheet">
-   <link rel="stylesheet" href="./css/styles.css">
-  <link rel="stylesheet" href="./css/loader.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
   
   <script>
     window.onload=function(){
+      var access_token=localStorage.getItem("access_token");
+      if(access_token)
+      {
+        window.location="news.html";
+      }
       document.getElementById("button").style.display='none';
       document.getElementById("otp1").style.display='none';
       // document.getElementById("loader").style.display='block';
-      newsHome();
-      // window.localStorage.setItem("loginShow", "true");
-      loginShow();
-      // document.getElementById("wrapper").style.display='block';
+
+
+ 
 }
     
     
@@ -49,37 +52,49 @@
     width: 100%;
   }
   }
-  
-  .nav-link{
-    color:black !important;
-  }
   .navbar{
       background-color: orange !important;
       
     }
     .fontt{
-    font-family: 'Abril Fatface', cursive;
+      font-family: 'Montserrat', sans-serif;
     font-size: 3rem;
+    font-weight: 600;
+    color: #ef6306;
+
+  }
+  .btn-color{
+    background-color:  #ef6306;
+    width: 100%;
+    color:white;
   }
     .content{
     font-family: 'Bitter', serif;
     font-size: 1.5rem;
-    text-align: justify;
    }
-  .fakeimg {
-    height: 300px;
-    width: 500px;
-    background: #aaa;
-  }
-  .fakeimg2 {
-    height: 200px;
-    width: 250px;
-    background: #aaa;
-  }
+.bordertop{
+  border-radius: 15px;
+  border-top: 4px solid #ED6206;
+  background-color: #F2F2F2;
+  padding-top: 10px;
+  padding-bottom: 15px;
+}
   .body
   {
     padding-right: 0px;
   }
+  .navbar-header {
+    float: left;
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+}
+.navbar-brand {float:none;}
+.footer{
+  width: 100%;
+  bottom: -140px;
+  position: relative;
+}
   </style>
 </head>
 <body style="padding-right: 0px;">
@@ -88,31 +103,10 @@
   <img class="resp" src="https://www.organiser.org//Encyc/2019/2/7/organiser-logo.png">
 </div> -->
 
-<nav class="navbar navbar-dark bg-primary navbar-expand-sm ">
-  <a class="navbar-brand" style="padding-top: 0px;" href="index.html"><img src="./images/Logo_Panchjanya_-min (1).png" class="img-responsive" height="70px" width="50px"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar" style="color: black;">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link btn" onclick="news()"><i class="far fa-newspaper"> </i> NEWS</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link btn" onclick="magazine()"><i class="fas fa-book-reader"></i> E-MAGAZINE</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link btn" onclick="vid()" ><i class="fas fa-play"></i> VIDEOS</a>
-      </li>  
-       
-    </ul>
-  </div>  
-       <ul class="nav navbar-nav topnav-right" id="collapsibleNavbar">
-        <li class="nav-item">
-        <a id="login" data-toggle="modal"  data-target="#myModal" class="nav-link btn-mag btn" onclick="number()" style="margin-right: 10px;margin-left: 15px;">Login</a>
-        <a id="logout"  class="nav-link btn-mag btn" onclick="logout()" style="margin-right: 10px;margin-left: 15px;">Logout</a>
-      </li>
-    </ul> 
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <div class="navbar-header">
+    <a class="navbar-brand" style="padding-top: 0px;" href="index.html"><img style="height: 75px;" class="pb-2" src="./images/Logo_Panchjanya_-min (1).png"></a>
+  </div>
 </nav>
 <!-- loader -->
 
@@ -129,50 +123,30 @@ width: 31px;"><span class="loader-inner"></span></span>
 
 <!-- loader -->
 
- <div class="modal-content none">
-         <div class="modal fade" id="myModal" role="dialog">
-             <div class="modal-dialog">
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">Login </h4>
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-        
-      <div class="modal-body">
-          <div class="form-row">
-            <div class="form-group col-sm-6">
-           <label class="sr-only" for="exampleInputEmail3">Phone Number</label>
-          <input type="text" id="phone" class="form-control form-control-sm mr-1" placeholder="enter phone number" >
-            </div>
-            <div class="form-group col-sm-4">
-              <label class="sr-only" for="exampleInputEmail3">Enter OTP</label>
-          <input type="text" id="otp1" class="form-control form-control-sm mr-1" placeholder="enter OTP">
-        </div>
-        </div>
-        <div class="form-row">
-          <button type="button" class="btn btn-primary btn-sm ml-1" onclick="authenticate()" id="otp">Get otp</button>
-          <button type="button" class="btn btn-primary btn-sm ml-1" id="button" onclick="otp()">Login</button>
-          </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
 
-<div class="container" style="margin-top:30px">
-  
-    
- 
-  <div class="news-add">
-    
-   
-  </div>
- 
-   
+<div class="container" style="margin-top:30px"> 
+    <div class="row justify-content-center">
+        <div class="col-sm-5 mt-5">
+            <div class="fontt">
+                Login
+            </div>
+            <div class="bordertop">
+                <div class="form-row justify-content-center mt-4">
+                    <div class="form-group col-sm-8 mt-3 mb-1" style="width: 80%;">
+                      <label for="phone" class="content">Enter Phone Number</label>
+                       <input type="text" id="phone" class="form-control form-control-sm mr-1">
+                       <button type="button" class="btn btn-color mt-2 content" onclick="authenticate()" id="otp">Get otp</button>
+                    </div>
+                    <div class="form-group col-sm-8" style="width: 80%;">
+                      <label class="sr-only" for="exampleInputEmail3">Enter OTP</label>
+                      <input type="text" id="otp1" class="form-control form-control-sm mr-1" placeholder="enter OTP">
+                      <button type="button" class="btn btn-color mt-2 content" id="button" onclick="otp()">Login</button>
+                    </div>
+                </div>
+              </div>
+
+        </div>
+    </div>
 </div>
 <hr>
 <!-- footer -->
@@ -182,30 +156,30 @@ width: 31px;"><span class="loader-inner"></span></span>
           <div class="col-sm-4 text-center">
               <h3 class="text-center font-weight-bold" style="color: #cc8b08">Important Links</h3>
               <ul class="list-unstyled">
-                <li><a class="col" href="#">About us</a></li>
-                <hr class="my-3">
-                <li><a class="col" href="#">Privacy</a></li>
-                <hr class="my-3">
-                <li><a class="col" href="#">Sitemap</a></li>
-                <hr class="my-3">
-                <li><a class="col" href="#">Contact us</a></li>
+                  <li><a class="col" href="#">About us</a></li>
+                  <hr class="my-3">
+                  <li><a class="col" href="#">Privacy</a></li>
+                  <hr class="my-3">
+                  <li><a class="col" href="#">Sitemap</a></li>
+                  <hr class="my-3">
+                  <li><a class="col" href="#">Contact us</a></li>
               </ul>
           </div>
           <div class="col-sm-3">
-              <h3 class="text-center font-weight-bold" style="color: #cc8b08">About Panchjanya</h3>
+              <h3 class="text-center font-weight-bold" style="color: #cc8b08">About Organiser</h3>
               <address class="col">
-Panchjanya is an Indian weekly magazine published by Rashtriya Swayamsevak Sangh (RSS) in Hindi. It was launched by RSS pracharak Deendayal Upadhyaya in 1948 in Lucknow.RSS is a right-wing, Hindu nationalist, paramilitary volunteer organisation that is widely regarded as the parent organisation of the ruling party of India, the Bharatiya Janata Party.
-          <br>Email: <a href="editor.panchjanya@bpdl.in">editor@panchjanya.in</a>
+Organiser - Voice of the nation. The oldest and most widely circulated nationalist English weekly of Bharat. Spreading Cultural Nationalist Views which goes beyond News.
+          Email: <a href="mailto:editor@organiser.org">editor@organiser.org</a>
          </address>
           </div>
           <div class="col-12 col-sm-4 align-self-center">
               <div class="text-center">
 
-                  <a class="btn btn-social-icon col" href="https://www.facebook.com/epanchjanya/"><i class="fa fa-facebook fa-lg"></i></a> 
+                  <a class="btn btn-social-icon col" href="https://www.facebook.com/eOrganiser/"><i class="fa fa-facebook fa-lg"></i></a> 
                   <hr>
-                  <a class="btn btn-social-icon col" href="https://twitter.com/epanchjanya"><i class="fa fa-twitter fa-lg"></i></a>
+                  <a class="btn btn-social-icon col" href="https://twitter.com/eOrganiser"><i class="fa fa-twitter fa-lg"></i></a>
                   <hr>
-                  <a class="btn btn-social-icon col" href="https://www.youtube.com/channel/UC3ZdCNFsU3ElU9e23YyI1Cw"><i class="fa fa-youtube fa-lg"></i></a>
+                  <a class="btn btn-social-icon col" href="https://www.youtube.com/c/eOrganiser"><i class="fa fa-youtube fa-lg"></i></a>
               </div>
           </div>
      </div>
@@ -216,19 +190,9 @@ Panchjanya is an Indian weekly magazine published by Rashtriya Swayamsevak Sangh
      </div>
   </div>
 </footer>
-<!-- footer -->
-<!-- <script type="text/javascript">
-  var counter = 1;
-  setInterval(function(){
-    document.getElementById('radio' + counter).checked = true;
-    counter++;
-    if(counter > 4){
-      counter = 1;
-    }
-  }, 5000);
-  </script> -->
-  <script>
-    setTimeout(hideLoader,2500);
+<script>
+setTimeout(hideLoader,2500);
 </script>
+  
 </body>
 </html>
