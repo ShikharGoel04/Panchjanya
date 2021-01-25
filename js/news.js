@@ -23,7 +23,7 @@ function newsDisp(){
         {
             $(document).ready(function(){
              var bearer = "Bearer " + localStorage.getItem("access_token");
-                fetch(b+'news/getNews?format=json',{
+                fetch(b+'news/getPanchjanyaNews?format=json',{
                     method: 'GET',
                     headers:{
                         Authorization:bearer
