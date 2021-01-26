@@ -21,13 +21,19 @@ else if(localStorage.getItem("index"))
     $(document).ready(function(){
         var bearer = "Bearer " + localStorage.getItem("access_token");
         var b=baseUrl();
-           fetch(b+'news/getPanchjanyaNews?format=json',{
-               method: 'GET',
-               headers:{
-                   Authorization:bearer
-               }
-         
-       })
+        var category=localStorage.getItem("newscategory");
+        fetch('https://cors-anywhere.herokuapp.com/https://rocky-bayou-35696.herokuapp.com/news/getNewsbyCategory',{
+            method: 'POST',
+            headers:{
+                'Accept':'application/json',
+                'Content-Type':'application/json',
+                Authorization:bearer
+            },body: JSON.stringify({
+                category:category,
+                client:"Panchjanya"
+            })
+      
+    })
         .then((response) => response.json())
         .then((data) => {
            
