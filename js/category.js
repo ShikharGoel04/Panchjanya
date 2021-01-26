@@ -20,7 +20,7 @@ window.onload=function(){
             
             const queryString = window.location.search;
             const urlParams = new URLSearchParams(queryString);
-            const category = urlParams.get('category')
+            const category = urlParams.get('category');
             console.log("category");
             console.log(category);
             var bearer = "Bearer " + localStorage.getItem("access_token");

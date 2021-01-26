@@ -23,17 +23,24 @@ function newsDisp(){
         {
             $(document).ready(function(){
              var bearer = "Bearer " + localStorage.getItem("access_token");
-                fetch(b+'news/getPanchjanyaNews?format=json',{
-                    method: 'GET',
+             var category=localStorage.getItem("newscategory");
+                fetch('https://cors-anywhere.herokuapp.com/https://rocky-bayou-35696.herokuapp.com/news/getNewsbyCategory',{
+                    method: 'POST',
                     headers:{
+                        'Accept':'application/json',
+			            'Content-Type':'application/json',
                         Authorization:bearer
-                    }
+                    },body: JSON.stringify({
+                        category:category,
+                        client:"Panchjanya"
+                    })
               
             })
              .then((response) => response.json())
              .then((data) => {
                 for(const i in data['news'])
                 {
+                    
                     var disp;
                     var contentLen=data['news'][i]['content'].length;
                     var contentDesc=data['news'][i]['content'];
