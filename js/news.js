@@ -54,7 +54,7 @@ function newsDisp(){
 
                     },
                     body: JSON.stringify({
-                refreshtoken:localStorage.getItem("refreshtoken")
+                refreshtoken:refreshtoken
               }),
                credentials: "same-origin"
             })
