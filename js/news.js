@@ -183,13 +183,16 @@ function newsDisp(){
             {
                 var disp1;
                 console.log(data['categories'][j]['category']);
-                disp1=' <div class="form-row"><input type="checkbox" id=%id% value=%category1%>%category%<br></div>';
-                var newhtml5 = disp1.replace('%id%','check'+j);
-                var newhtml5 = newhtml5.replace('%category1%',data['categories'][j]['category']);
-                var newhtml5 = newhtml5.replace('%category%',data['categories'][j]['category']);
-                console.log(newhtml5);
-                totalCat++;
-                document.querySelector('.content2').insertAdjacentHTML('beforeend' , newhtml5);
+                if(data['categories'][j]['category']!=null)
+                {
+                    disp1=' <div class="form-row"><input type="checkbox" id=%id% value=%category1%>%category%<br></div>';
+                    var newhtml5 = disp1.replace('%id%','check'+totalCat);
+                    var newhtml5 = newhtml5.replace('%category1%',data['categories'][j]['category']);
+                    var newhtml5 = newhtml5.replace('%category%',data['categories'][j]['category']);
+                    console.log(newhtml5);
+                    totalCat++;
+                    document.querySelector('.content2').insertAdjacentHTML('beforeend' , newhtml5);
+                }
            
          }
          window.localStorage.setItem("totalCat",totalCat);
