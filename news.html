@@ -9,6 +9,7 @@
   <script src="./js/baseUrl.js"></script>
   <script src="./js/authenticate.js"></script>
   <script src="./js/newsView.js"></script>
+  <script src="./js/fecthCategory.js"></script>
   <link rel="stylesheet" href="./css/newloader.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -95,9 +96,13 @@
   </div> 
   <ul class="nav navbar-nav topnav-right" id="collapsibleNavbar">
     <li class="nav-item">
-    <!-- <a id="login" data-toggle="modal"  data-target="#myModal" class="nav-link btn-mag btn" onclick="number()" style="margin-right: 10px;margin-left: 15px;">Login</a> -->
+      <a id="category" data-toggle="modal"  data-target="#myModal" class="nav-link btn-mag btn" ><i class="fa fa-plus" aria-hidden="true"></i></a>
+    </li>
+    <li class="nav-item">
+      
     <a id="logout"  class="nav-link btn-mag btn" onclick="logout()" style="margin-right: 10px;margin-left: 15px;">Logout</a>
   </li>
+  
 </ul>  
        <!-- <ul class="nav navbar-nav topnav-right">
         <li class="nav-item">
@@ -181,6 +186,32 @@
       </div>
     </div>
   </div> -->
+  <div class="modal-content none">
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+ <!-- Modal content-->
+ <div class="modal-content">
+   <div class="modal-header">
+     <h4 class="modal-title">Categories</h4>
+     <button type="button" class="close" data-dismiss="modal">&times;</button>
+ </div>
+   
+ <div class="modal-body">
+  <div class="content2">
+  </div>
+  
+
+     </div>
+   <div class="modal-footer">
+    <button type="button" class="btn btn-success" onclick="category()">Submit</button>
+     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+   </div>
+ </div>
+
+</div>
+</div>
+</div>
+
 
 
 <div class="container" style="margin-top:30px">

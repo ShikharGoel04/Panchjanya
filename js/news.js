@@ -43,19 +43,18 @@ function newsDisp(){
                  console.log(status);
                  if(status==403)
                  {
-                    //  alert("Forbidden");
-                     console.log(refreshtoken);
+                     alert("Forbidden");
+                    //  console.log(refreshtoken);
 
                  fetch(b+'profile/refresh',{
                     method: 'POST',
                     headers:{
-                        Authorization:"Bearer " + localStorage.getItem("access_token"),
                         'Accept':'application/json',
 				        'Content-Type':'application/json'
 
                     },
                     body: JSON.stringify({
-                refreshtoken:"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyMjMyMywiZXhwIjoxNjQzMTMxNzEzLCJpYXQiOjE2MTE2ODIxMTN9.w6dGXQX0i6fx9rLaIxcbPNuDZBVQh2Yzo6RMZ9W2CVA"
+                refreshtoken:localStorage.getItem("refreshtoken")
               }),
                credentials: "same-origin"
             })
@@ -72,34 +71,33 @@ function newsDisp(){
                 
                 }
                  else{
-
-                    for(const i in data['news'])
-                    {
-                        
-                        var disp;
-                        var contentLen=data['news'][i]['content'].length;
-                        var contentDesc=data['news'][i]['content'];
-                        var trimmedString=contentDesc.substring(0,500);
-                        console.log(i , data['news'][i] );
-                        console.log(data['news'][i]['title']);
-                        if(contentLen>500)
+                   
+                        fetchCategoryAPI();
+                        for(const i in data['news'])
                         {
-                            trimmedString+='. . .';
-                        }
-                       
+                        
+                            var disp;
+                            var contentLen=data['news'][i]['content'].length;
+                            var contentDesc=data['news'][i]['content'];
+                            var trimmedString=contentDesc.substring(0,500);
+                            console.log(i , data['news'][i] );
+                            console.log(data['news'][i]['title']);
+                            if(contentLen>500)
+                            {
+                                trimmedString+='. . .';
+                            }
                             disp='<div class="my-2 py-3 border mt-3 row justify-content-between"><div class="col-sm-5 mx-2"><img class="imgg responsive" style="margin-bottom:10px;" src=%imgsrc% height="300px" width="350px"></div><div class="col-sm-6 mx-2 "><a class="anch" onclick="newsview(%i%)" href="newsview.html"><h2 class="mt-0 fontt break">%title%</h2><h5 class="text-muted">by %author% %date%</h5><p class="content" style="color:#222224;">%content%</p></a></div></div>';
-                        //var newhtml = html.replace('%id%',data['news'][i]['id']);
-                        var newhtml = disp.replace('%title%',data['news'][i]['title']);
-                        newhtml = newhtml.replace('%content%',trimmedString);
-                        newhtml = newhtml.replace('%i%',i);
-                        newhtml=newhtml.replace('%imgsrc%',data['news'][i]['image']);
-                        newhtml=newhtml.replace('%data%',data);
-                        var dateConvert=formatDate(data['news'][i]['date']);
-                        newhtml = newhtml.replace('%date%',dateConvert);
-                        newhtml = newhtml.replace('%author%',data['news'][i]['author']);
-                        document.querySelector('.news-add').insertAdjacentHTML('beforeend' , newhtml);
-                       
-                        setTimeout(3000);
+                            //var newhtml = html.replace('%id%',data['news'][i]['id']);
+                            var newhtml = disp.replace('%title%',data['news'][i]['title']);
+                            newhtml = newhtml.replace('%content%',trimmedString);
+                            newhtml = newhtml.replace('%i%',i);
+                            newhtml=newhtml.replace('%imgsrc%',data['news'][i]['image']);
+                            newhtml=newhtml.replace('%data%',data);
+                            var dateConvert=formatDate(data['news'][i]['date']);
+                            newhtml = newhtml.replace('%date%',dateConvert);
+                            newhtml = newhtml.replace('%author%',data['news'][i]['author']);
+                            document.querySelector('.news-add').insertAdjacentHTML('beforeend' , newhtml);
+                            setTimeout(3000);
                     }
                     i++;
                  }
@@ -121,6 +119,87 @@ function newsDisp(){
             
             
         }
+
+        function category()
+        {
+            var i;
+            var selected=false;
+            var newscategory;
+            for(i=0;i<=1;i++)
+            {
+                var cat = document.getElementById("check"+i);
+                
+                if(cat.checked ==true)
+                {
+                    selected=true;
+                    break;
+                }
+                
+            }
+            if(selected==true)
+            {
+                localStorage.removeItem("newscategory");
+               for(i=0;i<=1;i++)
+                {
+                    var cat = document.getElementById("check"+i);
+                    if(localStorage.getItem("newscategory"))
+                     {   newscategory=localStorage.getItem("newscategory");
+                        if(cat.checked ==true)
+                        window.localStorage.setItem("newscategory",newscategory+","+cat.value);
+                    }
+                    else
+                    {
+                        if(cat.checked ==true)
+                        window.localStorage.setItem("newscategory",cat.value);
+                    }
+
+                }
+            }
+            else
+            {
+                alert("select atleast 1 choice");
+            }
+        }
+
+
+        function fetchCategoryAPI()
+        {
+            var b=baseUrl();
+            fetch(b+'news/getCategories',{
+                method: 'GET',
+                headers:{
+                    'Accept':'application/json',
+                    'Content-Type':'application/json',
+                    Authorization:"Bearer " + localStorage.getItem("access_token")
+                }
+          
+        })
+         .then( (response) => response.json())
+         .then((data) => {
+            for(const j in data['categories'])
+            {
+                var disp1;
+                console.log(data['categories'][j]['category']);
+                disp1=' <div class="form-row"><input type="checkbox" id=%id% value=%category1%>%category%<br></div>';
+                var newhtml5 = disp1.replace('%id%','check'+j);
+                var newhtml5 = newhtml5.replace('%category1%',data['categories'][j]['category']);
+                var newhtml5 = newhtml5.replace('%category%',data['categories'][j]['category']);
+                console.log(newhtml5);
+                document.querySelector('.content2').insertAdjacentHTML('beforeend' , newhtml5);
+           
+         }})
+         .catch((error) => {
+            console.log("reset client error-------",error);
+           
+            
+       });
+
+    
+
+            
+        }
+
+      
 
         
     
