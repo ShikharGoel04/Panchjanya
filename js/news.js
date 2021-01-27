@@ -125,7 +125,8 @@ function newsDisp(){
             var i;
             var selected=false;
             var newscategory;
-            for(i=0;i<=1;i++)
+            var totalCat=localStorage.getItem("totalCat");
+            for(i=0;i<totalCat;i++)
             {
                 var cat = document.getElementById("check"+i);
                 
@@ -139,7 +140,7 @@ function newsDisp(){
             if(selected==true)
             {
                 localStorage.removeItem("newscategory");
-               for(i=0;i<=1;i++)
+               for(i=0;i<totalCat;i++)
                 {
                     var cat = document.getElementById("check"+i);
                     if(localStorage.getItem("newscategory"))
@@ -154,6 +155,7 @@ function newsDisp(){
                     }
 
                 }
+                window.location="news.html";
             }
             else
             {
@@ -165,6 +167,7 @@ function newsDisp(){
         function fetchCategoryAPI()
         {
             var b=baseUrl();
+            var totalCat=0;
             fetch(b+'news/getCategories',{
                 method: 'GET',
                 headers:{
@@ -185,9 +188,12 @@ function newsDisp(){
                 var newhtml5 = newhtml5.replace('%category1%',data['categories'][j]['category']);
                 var newhtml5 = newhtml5.replace('%category%',data['categories'][j]['category']);
                 console.log(newhtml5);
+                totalCat++;
                 document.querySelector('.content2').insertAdjacentHTML('beforeend' , newhtml5);
            
-         }})
+         }
+         window.localStorage.setItem("totalCat",totalCat);
+        })
          .catch((error) => {
             console.log("reset client error-------",error);
            
