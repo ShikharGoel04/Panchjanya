@@ -43,7 +43,7 @@ function newsDisp(){
                  console.log(status);
                  if(status==403)
                  {
-                     alert("Forbidden");
+                    //  alert("Forbidden");
                     //  console.log(refreshtoken);
 
                  fetch(b+'profile/refresh',{
