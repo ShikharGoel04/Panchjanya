@@ -120,47 +120,10 @@ function newsDisp(){
             
         }
 
-        function category()
+        function category(idd)
         {
-            var i;
-            var selected=false;
-            var newscategory;
-            var totalCat=localStorage.getItem("totalCat");
-            for(i=0;i<totalCat;i++)
-            {
-                var cat = document.getElementById("check"+i);
-                
-                if(cat.checked ==true)
-                {
-                    selected=true;
-                    break;
-                }
-                
-            }
-            if(selected==true)
-            {
-                localStorage.removeItem("newscategory");
-               for(i=0;i<totalCat;i++)
-                {
-                    var cat = document.getElementById("check"+i);
-                    if(localStorage.getItem("newscategory"))
-                     {   newscategory=localStorage.getItem("newscategory");
-                        if(cat.checked ==true)
-                        window.localStorage.setItem("newscategory",newscategory+","+cat.value);
-                    }
-                    else
-                    {
-                        if(cat.checked ==true)
-                        window.localStorage.setItem("newscategory",cat.value);
-                    }
-
-                }
+                window.localStorage.setItem("newscategory",idd.value);
                 window.location="news.html";
-            }
-            else
-            {
-                alert("select atleast 1 choice");
-            }
         }
 
 
@@ -185,8 +148,9 @@ function newsDisp(){
                 console.log(data['categories'][j]['category']);
                 if(data['categories'][j]['category']!=null)
                 {
-                    disp1='<button class="btn btn-lg my-2 button1" id=%id% value=%category1% onclick="category()">%category% </button>';
+                    disp1='<button class="btn btn-lg my-2 button1" id=%id% value=%category1% onclick="category(%idd%)">%category% </button>';
                     var newhtml5 = disp1.replace('%id%','check'+totalCat);
+                    var newhtml5 = newhtml5.replace('%idd%','check'+totalCat);
                     var newhtml5 = newhtml5.replace('%category1%',data['categories'][j]['category']);
                     var newhtml5 = newhtml5.replace('%category%',data['categories'][j]['category']);
                     console.log(newhtml5);
