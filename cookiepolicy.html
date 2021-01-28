@@ -4,10 +4,14 @@
   <title>Panchjanya</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="./js/authenticate.js"></script>
-  <script src="./js/category.js"></script>
+  <script src="./js/news.js"></script>
+  <script src="./js/number.js"></script>
   <script src="./js/baseUrl.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="./js/authenticate.js"></script>
+  <script src="./js/newsView.js"></script>
+  <script src="./js/fecthCategory.js"></script>
+  <link rel="stylesheet" href="./css/newloader.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -15,19 +19,24 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
   <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
 <script src="https://kit.fontawesome.com/08e3572502.js" crossorigin="anonymous"></script>
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Bitter:ital@1&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="./css/loader.css">
 <link rel="stylesheet" href="./css/styles.css">
 <link rel="stylesheet" href="./css/newloader.css">
+  <script>
+      window.onload=function(){
+      newsDisp();
+}
+    </script>
+
 
   <style>
-            .responsive {
+    .responsive {
   width: 100%;
 }
-    @media screen and (max-width: 500px) {
+@media screen and (max-width: 500px) {
   .resp {
     width: 100%;
   }
@@ -39,24 +48,21 @@
       background-color: orange !important;
       
     }
-    .content{
-    font-family: 'Bitter', serif;
-    font-size: 1.5rem;
+   .content{
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.7rem;
     text-align: justify;
    }
-   .fontt{
-    font-family: 'Abril Fatface', cursive;
-    font-size: 3rem;
-  }
-    .responsive {
-  width: 100%;
-}
-
   .body
   {
     padding-right: 0px;
   }
+  .fontt{
+    font-family: 'Poppins', sans-serif;
 
+    color: #191816;
+
+  }
   </style>
 </head>
 <body style="padding-right: 0px;">
@@ -86,32 +92,67 @@
       </li>   
        
     </ul>
-  </div>  
+
+  </div> 
   <ul class="nav navbar-nav topnav-right" id="collapsibleNavbar">
     <li class="nav-item">
+      <a id="category" data-toggle="modal"  data-target="#myModal" class="nav-link btn-mag btn" ><i class="fa fa-plus" aria-hidden="true"></i></a>
+    </li>
+    <li class="nav-item">
+      
     <a id="logout"  class="nav-link btn-mag btn" onclick="logout()" style="margin-right: 10px;margin-left: 15px;">Logout</a>
   </li>
-</ul> 
+  
+</ul>  
        <!-- <ul class="nav navbar-nav topnav-right">
         <li class="nav-item">
         <a data-toggle="modal" data-target="#myModal" class="nav-link btn-mag btn" onclick="number()">Login</a>
       </li>
     </ul>  -->
 </nav>
-<!-- loader -->
-<div id="loading">
 
+<!-- loader -->
+
+
+<div id="loading">
+  
 </div>
 
-<!-- <div class="loader-wrapper" id="loader">
-  <span class="loader" style="
-margin-top: 35%;
-margin-left: 50%;    height: 31px;
-width: 31px;"><span class="loader-inner"></span></span>
-</div> -->
-
 <!-- loader -->
 
+<!-- <div class="modal-content none">
+  <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+ Modal content-->
+<!-- <div class="modal-content">
+ <div class="modal-header">
+   <h4 class="modal-title">Login </h4>
+   <button type="button" class="close" data-dismiss="modal">&times;</button>
+</div> --> 
+ 
+<!-- <div class="modal-body">
+   <div class="form-row">
+     <div class="form-group col-sm-6">
+    <label class="sr-only" for="exampleInputEmail3">Phone Number</label>
+   <input type="text" id="phone" class="form-control form-control-sm mr-1" placeholder="enter phone number" >
+     </div>
+     <div class="form-group col-sm-4">
+       <label class="sr-only" for="exampleInputEmail3">Enter OTP</label>
+   <input type="text" id="otp1" class="form-control form-control-sm mr-1" placeholder="enter OTP">
+ </div>
+ </div>
+ <div class="form-row">
+   <button type="button" class="btn btn-primary btn-sm ml-1" onclick="authenticate()" id="otp">Get otp</button>
+   <button type="button" class="btn btn-primary btn-sm ml-1" id="button" onclick="otp()">Login</button>
+   </div>
+ <div class="modal-footer">
+   <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+ </div>
+</div>
+</div>
+</div>
+</div>
+</div> -->
  <!-- <div class="modal-content none">
          <div class="modal fade" id="myModal" role="dialog">
              <div class="modal-dialog">
@@ -145,22 +186,44 @@ width: 31px;"><span class="loader-inner"></span></span>
       </div>
     </div>
   </div> -->
-
-
-<div class="container" style="margin-top:30px">
+  <div class="modal-content none">
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+ <!-- Modal content-->
+ <div class="modal-content">
+   <div class="modal-header">
+     <h4 class="modal-title">Categories</h4>
+     <button type="button" class="close" data-dismiss="modal">&times;</button>
+ </div>
+   
+ <div class="modal-body">
+  <div class="content2">
+  </div>
   
-    
- 
-      <div class="cat-add card">
-        
-       
-      </div>
-     
-       
+
+     </div>
+   <div class="modal-footer">
+    <button type="button" class="btn btn-success" onclick="category()">Submit</button>
+     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+   </div>
+ </div>
+
+</div>
+</div>
+</div>
+
+
+
+<div class="container">
+    <h1>Cookie Policy</h1>
+    <div>
+
     </div>
-  
+</div> 
 
 
+
+<hr>
 <!-- footer -->
 <footer class="footer">
   <div class="container">
@@ -181,17 +244,17 @@ width: 31px;"><span class="loader-inner"></span></span>
               <h3 class="text-center font-weight-bold" style="color: #cc8b08">About Panchjanya</h3>
               <address class="col">
 Panchjanya is an Indian weekly magazine published by Rashtriya Swayamsevak Sangh (RSS) in Hindi. It was launched by RSS pracharak Deendayal Upadhyaya in 1948 in Lucknow.RSS is a right-wing, Hindu nationalist, paramilitary volunteer organisation that is widely regarded as the parent organisation of the ruling party of India, the Bharatiya Janata Party.
-<br>Email: <a href="editor.panchjanya@bpdl.in">editor@panchjanya.in</a>
+          <br>Email: <a href="editor.panchjanya@bpdl.in">editor@panchjanya.in</a>
          </address>
           </div>
           <div class="col-12 col-sm-4 align-self-center">
               <div class="text-center">
 
-                  <a class="btn btn-social-icon col" href="https://www.facebook.com/epanchjanya/"><i class="fa fa-facebook fa-lg"></i></a> 
+                  <a class="btn btn-social-icon" style="color:#888f96;" href="https://www.facebook.com/epanchjanya/"><i class="fa fa-facebook fa-lg"></i></a> 
                   <hr>
-                  <a class="btn btn-social-icon col" href="https://twitter.com/epanchjanya"><i class="fa fa-twitter fa-lg"></i></a>
+                  <a class="btn btn-social-icon" style="color:#888f96;" href="https://twitter.com/epanchjanya"><i class="fa fa-twitter fa-lg"></i></a>
                   <hr>
-                  <a class="btn btn-social-icon col" href="https://www.youtube.com/channel/UC3ZdCNFsU3ElU9e23YyI1Cw"><i class="fa fa-youtube fa-lg"></i></a>
+                  <a class="btn btn-social-icon" style="color:#888f96;" href="https://www.youtube.com/channel/UC3ZdCNFsU3ElU9e23YyI1Cw"><i class="fa fa-youtube fa-lg"></i></a>
               </div>
           </div>
      </div>
