@@ -41,6 +41,15 @@
     width: 100%;
   }
 }
+@media screen and (min-width: 0px) and (max-width: 935px) {
+  #mobile { display: block; }  /* show it on small screens */
+  #computer { display: none;}
+}
+
+@media screen and (min-width: 935px) {
+  #mobile { display: none; }   /* hide it elsewhere */
+  #computer { display: block;}
+}
 .nav-link{
     color:black !important;
   }
@@ -195,10 +204,9 @@
       </div>
     </div>
   </div> -->
-  <div class="modal-content none">
+  <!-- <div class="modal-content none">
     <div class="modal fade" id="myModal" role="dialog">
         <div class="modal-dialog">
- <!-- Modal content-->
  <div class="modal-content">
    <div class="modal-header">
      <h4 class="modal-title">Categories</h4>
@@ -219,12 +227,27 @@
 
 </div>
 </div>
+</div> -->
+
+
+<!-- dropdown mobile view -->
+
+<div class="dropdown" id="mobile" style="text-align: center;">
+  <button class="btn btn-secondary btn-lg dropdown-toggle"  type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Categories
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+  </div>
 </div>
 
+<!-- dropdown mobile view -->
 
 
  <div class="row m-1 justify-content-between">
-   <div class="col-sm-2 mx-2">
+   <div class="col-sm-2 mx-2" id="computer">
      <h1 class="font-weight-bold" style="font-size: 3rem;text-align: center;">
        Categories
      </h1>
