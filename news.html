@@ -117,13 +117,14 @@
     </ul>
 
   </div> 
-  <ul class="nav navbar-nav topnav-right" id="collapsibleNavbar">
-    <li class="nav-item">
-      
-    <a id="logout"  class="nav-link btn-mag btn" onclick="logout()" style="margin-right: 10px;margin-left: 15px;">Logout</a>
-  </li>
-  
-</ul>  
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul style="float:right;" class="nav navbar-nav topnav-right" >
+      <li class="nav-item">
+      <!-- <a id="login" data-toggle="modal"  data-target="#myModal" class="nav-link btn-mag btn" onclick="number()" style="margin-right: 10px;margin-left: 15px;">Login</a> -->
+      <a id="logout"  class="nav-link btn-mag btn" onclick="logout()" style="margin-right: 10px;margin-left: 15px;">Logout</a>
+    </li>
+  </ul>  
+  </div>
        <!-- <ul class="nav navbar-nav topnav-right">
         <li class="nav-item">
         <a data-toggle="modal" data-target="#myModal" class="nav-link btn-mag btn" onclick="number()">Login</a>
