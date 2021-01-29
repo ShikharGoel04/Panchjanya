@@ -119,7 +119,6 @@ function newsDisp(){
                });
             
             });
-            setTimeout(hideLoader,3000);
         
             }
                 
@@ -191,6 +190,7 @@ function newsDisp(){
          var active=localStorage.getItem("active");
          document.getElementById(active).style.backgroundColor="orange";
          window.localStorage.setItem("totalCat",totalCat);
+         
         })
          .catch((error) => {
             console.log("reset client error-------",error);

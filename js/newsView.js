@@ -22,7 +22,7 @@ else if(localStorage.getItem("index"))
         var bearer = "Bearer " + localStorage.getItem("access_token");
         var b=baseUrl();
         var category=localStorage.getItem("newscategory");
-        fetch('https://cors-anywhere.herokuapp.com/https://rocky-bayou-35696.herokuapp.com/news/getNewsbyCategory',{
+        fetch(b+'news/getNewsbyCategory',{
             method: 'POST',
             headers:{
                 'Accept':'application/json',
