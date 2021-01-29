@@ -26,6 +26,7 @@ function newsDisp(){
              var bearer = "Bearer " + localStorage.getItem("access_token");
              var refreshtoken=localStorage.getItem("refreshtoken");
              var category=localStorage.getItem("newscategory");
+             console.log(category);
                 fetch(b+'news/getNewsbyCategory',{
                     method: 'POST',
                     headers:{
@@ -123,7 +124,8 @@ function newsDisp(){
         function category(idd)
         {
                 // idd.style.color = "orange";
-                window.localStorage.setItem("newscategory",idd.value);
+                // console.log(idd.innerText);
+                window.localStorage.setItem("newscategory",idd.innerText);
                 window.location="news.html";
         }
 
@@ -156,13 +158,16 @@ function newsDisp(){
                     var newhtml5 = newhtml5.replace('%idd%','check'+totalCat);
                     var newhtml5 = newhtml5.replace('%category1%',data['categories'][j]['category']);
                     var newhtml5 = newhtml5.replace('%category%',data['categories'][j]['category']);
-                    var newhtml6 = disp2.replace('%id%','check'+totalCat);
+                    var newhtml6 = disp2.replace('%id%','check'+totalCat+1);
                     var newhtml6 = newhtml6.replace('%idd%','check'+totalCat);
                     var newhtml6 = newhtml6.replace('%category1%',data['categories'][j]['category']);
                     var newhtml6 = newhtml6.replace('%category%',data['categories'][j]['category']);
+                    // console.log(newhtml5);
+                    // console.log(newhtml6);
+
                     totalCat++;
                     document.querySelector('.content2').insertAdjacentHTML('beforeend' , newhtml5);
-                    document.querySelector('.content3').insertAdjacentHTML('beforeend' , newhtml5);
+                    document.querySelector('.content3').insertAdjacentHTML('beforeend' , newhtml6);
                 }
            
          }
