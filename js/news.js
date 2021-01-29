@@ -122,7 +122,7 @@ function newsDisp(){
 
         function category(idd)
         {
-                idd.style.color = "orange";
+                // idd.style.color = "orange";
                 window.localStorage.setItem("newscategory",idd.value);
                 window.location="news.html";
         }
