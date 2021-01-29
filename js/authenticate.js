@@ -125,7 +125,7 @@ hideButton();
 		document.getElementById("loading").style.display='block';
 		 window.localStorage.setItem("access_token", responseJson.access_token);
 		 window.localStorage.setItem("refreshtoken",responseJson.refreshtoken);
-		 window.localStorage.setItem("newscategory","Educational" );
+		//  window.localStorage.setItem("newscategory","Educational" );
 
 		 
 		// loginShow();

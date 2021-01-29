@@ -30,6 +30,7 @@ function newsDisp(){
              var bearer = "Bearer " + localStorage.getItem("access_token");
              var refreshtoken=localStorage.getItem("refreshtoken");
              var category=localStorage.getItem("newscategory");
+             console.log("category");
              console.log(category);
                 fetch(b+'news/getNewsbyCategory',{
                     method: 'POST',
@@ -81,6 +82,7 @@ function newsDisp(){
                         
                         for(const i in data['news'])
                         {
+
                         
                             var disp;
                             var contentLen=data['news'][i]['content'].length;
@@ -128,8 +130,6 @@ function newsDisp(){
 
         function category(idd)
         {
-                // idd.style.color = "orange";
-                // console.log(idd.innerText);
                 window.localStorage.setItem("active",idd.id);
                 window.localStorage.setItem("newscategory",idd.innerText);
                 window.location="news.html";
@@ -151,9 +151,12 @@ function newsDisp(){
         })
          .then( (response) => response.json())
          .then((data) => {
+            var newscategory=localStorage.getItem("newscategory");
+           
           
             for(const j in data['categories'])
             {
+               
                 var disp1;
                 var disp2;
                 console.log(data['categories'][j]['category']);
@@ -178,6 +181,13 @@ function newsDisp(){
                 }
            
          }
+        //  if(newscategory=== null)
+        //  {
+        //      window.localStorage.setItem("newscategory",data['categories'][1]['category']);
+        //      window.localStorage.setItem("active","check01");
+        //      window.location("news.html");
+             
+        //  }
          var active=localStorage.getItem("active");
          document.getElementById(active).style.backgroundColor="orange";
          window.localStorage.setItem("totalCat",totalCat);
