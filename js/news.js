@@ -160,7 +160,6 @@ function newsDisp(){
                     var newhtml6 = newhtml6.replace('%idd%','check'+totalCat);
                     var newhtml6 = newhtml6.replace('%category1%',data['categories'][j]['category']);
                     var newhtml6 = newhtml6.replace('%category%',data['categories'][j]['category']);
-                    console.log(newhtml5);
                     totalCat++;
                     document.querySelector('.content2').insertAdjacentHTML('beforeend' , newhtml5);
                     document.querySelector('.content3').insertAdjacentHTML('beforeend' , newhtml5);
