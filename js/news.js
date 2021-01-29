@@ -145,6 +145,7 @@ function newsDisp(){
         })
          .then( (response) => response.json())
          .then((data) => {
+          
             for(const j in data['categories'])
             {
                 var disp1;
@@ -159,7 +160,7 @@ function newsDisp(){
                     var newhtml5 = newhtml5.replace('%category1%',data['categories'][j]['category']);
                     var newhtml5 = newhtml5.replace('%category%',data['categories'][j]['category']);
                     var newhtml6 = disp2.replace('%id%','check'+totalCat+1);
-                    var newhtml6 = newhtml6.replace('%idd%','check'+totalCat);
+                    var newhtml6 = newhtml6.replace('%idd%','check'+totalCat+1);
                     var newhtml6 = newhtml6.replace('%category1%',data['categories'][j]['category']);
                     var newhtml6 = newhtml6.replace('%category%',data['categories'][j]['category']);
                     // console.log(newhtml5);
