@@ -162,7 +162,7 @@ function newsDisp(){
                 if(data['categories'][j]['category']!=null)
                 {
                     disp2='<button class="btn btn-lg my-2 button1" id=%id% value=%category1% onclick="category(%idd%)">%category% </button>';
-                    disp1='<button class="btn btn-lg my-2 button1" id=%id% value=%category1% onclick="category(%idd%)">%category% </button>';
+                    disp1='<button class="btn btn-lg my-2 button1" style="width:80%;" id=%id% value=%category1% onclick="category(%idd%)">%category% </button>';
                     var newhtml5 = disp1.replace('%id%','check'+totalCat);
                     var newhtml5 = newhtml5.replace('%idd%','check'+totalCat);
                     var newhtml5 = newhtml5.replace('%category1%',data['categories'][j]['category']);
