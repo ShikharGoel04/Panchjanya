@@ -163,6 +163,7 @@ function newsDisp(){
         function category(idd)
         {
                 window.localStorage.setItem("active",idd.id);
+                window.localStorage.setItem("next",0);
                 window.localStorage.setItem("newscategory",idd.innerText);
                 window.location="news.html";
         }
@@ -210,22 +211,26 @@ function newsDisp(){
                 {
                 if(data['categories'][j]['categoryName']!=null)
                 {
-                    disp2='<button class="btn btn-lg my-2 button1" id=%id% value=%category1% onclick="category(%idd%)">%category% </button>';
-                    disp1='<button class="btn btn-lg my-2 button1" style="width:80%;" id=%id% value=%category1% onclick="category(%idd%)">%category% </button>';
-                    var newhtml5 = disp1.replace('%id%','check'+totalCat);
-                    var newhtml5 = newhtml5.replace('%idd%','check'+totalCat);
-                    var newhtml5 = newhtml5.replace('%category1%',data['categories'][j]['categoryName']);
-                    var newhtml5 = newhtml5.replace('%category%',data['categories'][j]['categoryName']);
-                    var newhtml6 = disp2.replace('%id%','check'+totalCat+1);
-                    var newhtml6 = newhtml6.replace('%idd%','check'+totalCat+1);
-                    var newhtml6 = newhtml6.replace('%category1%',data['categories'][j]['categoryName']);
-                    var newhtml6 = newhtml6.replace('%category%',data['categories'][j]['categoryName']);
-                    // console.log(newhtml5);
-                    // console.log(newhtml6);
+                    if(data['categories'][j]["is_Panchjanya"]==true)
+                    {
+                        disp2='<button class="btn btn-lg my-2 button1" id=%id% value=%category1% onclick="category(%idd%)">%category% </button>';
+                        disp1='<button class="btn btn-lg my-2 button1" style="width:80%;" id=%id% value=%category1% onclick="category(%idd%)">%category% </button>';
+                        var newhtml5 = disp1.replace('%id%','check'+totalCat);
+                        var newhtml5 = newhtml5.replace('%idd%','check'+totalCat);
+                        var newhtml5 = newhtml5.replace('%category1%',data['categories'][j]['categoryName']);
+                        var newhtml5 = newhtml5.replace('%category%',data['categories'][j]['categoryName']);
+                        var newhtml6 = disp2.replace('%id%','check'+totalCat+1);
+                        var newhtml6 = newhtml6.replace('%idd%','check'+totalCat+1);
+                        var newhtml6 = newhtml6.replace('%category1%',data['categories'][j]['categoryName']);
+                        var newhtml6 = newhtml6.replace('%category%',data['categories'][j]['categoryName']);
+                        // console.log(newhtml5);
+                        // console.log(newhtml6);
+    
+                        totalCat++;
+                        document.querySelector('.content2').insertAdjacentHTML('beforeend' , newhtml5);
+                        document.querySelector('.content3').insertAdjacentHTML('beforeend' , newhtml6);
+                    }
 
-                    totalCat++;
-                    document.querySelector('.content2').insertAdjacentHTML('beforeend' , newhtml5);
-                    document.querySelector('.content3').insertAdjacentHTML('beforeend' , newhtml6);
                 }
             }
            
