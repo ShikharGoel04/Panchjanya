@@ -25,12 +25,12 @@ function newsDisp(){
         else if(localStorage.getItem("access_token"))
         {
             $(document).ready(function(){
-                if(localStorage.getItem("next")===null)
+                if(localStorage.getItem("start")===null)
                 {
-                    window.localStorage.setItem("next",0);
+                    window.localStorage.setItem("start",0);
                 }
                  
-              const start=parseInt(localStorage.getItem("next"));
+              const start=parseInt(localStorage.getItem("start"));
               
              var bearer = "Bearer " + localStorage.getItem("access_token");
              var refreshtoken=localStorage.getItem("refreshtoken");
@@ -52,7 +52,7 @@ function newsDisp(){
             })
              .then( (response) =>  {status=response.status; return(response.json());})
              .then((data) => {
-                 window.localStorage.setItem("next",data["next"]);
+                
                  const count=parseInt(data["count"]);
                  const next=parseInt(data["next"]);
                  if((next<count)&&(next>=8))
@@ -163,7 +163,7 @@ function newsDisp(){
         function category(idd)
         {
                 window.localStorage.setItem("active",idd.id);
-                window.localStorage.setItem("next",0);
+                window.localStorage.setItem("start",0);
                 window.localStorage.setItem("newscategory",idd.innerText);
                 window.location="news.html";
         }
@@ -186,6 +186,7 @@ function newsDisp(){
          .then((data) => {
             var newscategory=localStorage.getItem("newscategory");
             var allid1;
+            var allid2;
           
             for(const j in data['categories'])
             {
@@ -199,12 +200,19 @@ function newsDisp(){
                 if(data['categories'][j]['categoryName']=="All")
                 {
                     disp3='<button class="btn btn-lg my-2 button1" id=%id% value=%category1% onclick="category(%idd%)">%category% </button>'; 
+                    disp4='<button class="btn btn-lg my-2 button1" style="width:80%;" id=%id% value=%category1% onclick="category(%idd%)">%category% </button>'; 
                     var newhtml7 = disp3.replace('%id%','check'+totalCat+1);
                     var newhtml7 = newhtml7.replace('%idd%','check'+totalCat+1);
                     var newhtml7 = newhtml7.replace('%category1%',data['categories'][j]['categoryName']);
                     var newhtml7 = newhtml7.replace('%category%',data['categories'][j]['categoryName']);
+                    var newhtml8 = disp4.replace('%id%','check'+totalCat);
+                    var newhtml8 = newhtml8.replace('%idd%','check'+totalCat);
+                    var newhtml8 = newhtml8.replace('%category1%',data['categories'][j]['categoryName']);
+                    var newhtml8 = newhtml8.replace('%category%',data['categories'][j]['categoryName']);
                     allid1='check'+totalCat+1;
+                    allid2='check'+totalCat;
                     document.querySelector('.content4').insertAdjacentHTML('beforeend' , newhtml7);
+                    document.querySelector('.content5').insertAdjacentHTML('beforeend' , newhtml8);
                     totalCat++;
                 }
                 else
@@ -245,6 +253,7 @@ function newsDisp(){
          if(localStorage.getItem("newscategory")=="All")
          {
             document.getElementById(allid1).style.backgroundColor="orange";
+            document.getElementById(allid2).style.backgroundColor="orange";
          }
          else
          {
@@ -264,13 +273,18 @@ function newsDisp(){
 
             
         }
+        function next()
+        {
+            window.localStorage.setItem("start",parseInt(localStorage.getItem("start"))+4);
 
+        }
       
 
         function previous()
         {
-            var next=localStorage.getItem("next");
-            window.localStorage.setItem("next",parseInt(next)-8);
+
+            var start=localStorage.getItem("start");
+            window.localStorage.setItem("start",parseInt(start)-8);
         }
 
       

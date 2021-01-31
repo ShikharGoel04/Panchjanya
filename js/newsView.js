@@ -19,6 +19,7 @@ else if(localStorage.getItem("index"))
     var i=localStorage.getItem("index");
 
     $(document).ready(function(){
+        const start=parseInt(localStorage.getItem("start"));
         var bearer = "Bearer " + localStorage.getItem("access_token");
         var b=baseUrl();
         var category=localStorage.getItem("newscategory");
@@ -30,7 +31,8 @@ else if(localStorage.getItem("index"))
                 Authorization:bearer
             },body: JSON.stringify({
                 category:category,
-                client:"Panchjanya"
+                client:"Panchjanya",
+                start:start
             })
       
     })
