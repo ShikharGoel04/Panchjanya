@@ -197,7 +197,7 @@ function newsDisp(){
                 console.log(data['categories'][j]['categoryName']);
                 if(data['categories'][j]['categoryName']=="All")
                 {
-                    disp3='<button class="btn btn-lg my-2 button1" style="width:80%;" id=%id% value=%category1% onclick="category(%idd%)">%category% </button>'; 
+                    disp3='<button class="btn btn-lg my-2 button1" id=%id% value=%category1% onclick="category(%idd%)">%category% </button>'; 
                     var newhtml7 = disp3.replace('%id%','check'+totalCat+1);
                     var newhtml7 = newhtml7.replace('%idd%','check'+totalCat+1);
                     var newhtml7 = newhtml7.replace('%category1%',data['categories'][j]['categoryName']);
