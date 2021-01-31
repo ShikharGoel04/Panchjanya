@@ -184,14 +184,30 @@ function newsDisp(){
          .then( (response) => response.json())
          .then((data) => {
             var newscategory=localStorage.getItem("newscategory");
-           
+            var allid1;
           
             for(const j in data['categories'])
             {
                
                 var disp1;
                 var disp2;
+                var disp3;
+               
+               
                 console.log(data['categories'][j]['categoryName']);
+                if(data['categories'][j]['categoryName']=="All")
+                {
+                    disp3='<button class="btn btn-lg my-2 button1" style="width:80%;" id=%id% value=%category1% onclick="category(%idd%)">%category% </button>'; 
+                    var newhtml7 = disp3.replace('%id%','check'+totalCat+1);
+                    var newhtml7 = newhtml7.replace('%idd%','check'+totalCat+1);
+                    var newhtml7 = newhtml7.replace('%category1%',data['categories'][j]['categoryName']);
+                    var newhtml7 = newhtml7.replace('%category%',data['categories'][j]['categoryName']);
+                    allid1='check'+totalCat+1;
+                    document.querySelector('.content4').insertAdjacentHTML('beforeend' , newhtml7);
+                    totalCat++;
+                }
+                else
+                {
                 if(data['categories'][j]['categoryName']!=null)
                 {
                     disp2='<button class="btn btn-lg my-2 button1" id=%id% value=%category1% onclick="category(%idd%)">%category% </button>';
@@ -211,6 +227,7 @@ function newsDisp(){
                     document.querySelector('.content2').insertAdjacentHTML('beforeend' , newhtml5);
                     document.querySelector('.content3').insertAdjacentHTML('beforeend' , newhtml6);
                 }
+            }
            
          }
         //  if(newscategory=== null)
@@ -220,9 +237,16 @@ function newsDisp(){
         //      window.location("news.html");
              
         //  }
-         var active=localStorage.getItem("active");
-         document.getElementById(active).style.backgroundColor="orange";
-         window.localStorage.setItem("totalCat",totalCat);
+         if(localStorage.getItem("newscategory")=="All")
+         {
+            document.getElementById(allid1).style.backgroundColor="orange";
+         }
+         else
+         {
+            var active=localStorage.getItem("active");
+            document.getElementById(active).style.backgroundColor="orange";
+            window.localStorage.setItem("totalCat",totalCat);
+         }
          
         })
          .catch((error) => {
