@@ -284,7 +284,7 @@ function newsDisp(){
         {
 
             var start=localStorage.getItem("start");
-            window.localStorage.setItem("start",parseInt(start)-8);
+            window.localStorage.setItem("start",parseInt(start)-4);
         }
 
       
