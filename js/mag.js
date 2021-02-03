@@ -66,7 +66,8 @@ window.onload=function(){
         adobeDCView.previewFile({
             content:{location: {url: data1}},
             metaData:{fileName: "Organiser 07 February 2021"}
-        }, {showLeftHandPanel: false, showDownloadPDF: false, showPrintPDF: false});
+        }, {showAnnotationTools: false, showLeftHandPanel: false, dockPageControls: false, 
+			showDownloadPDF: false, showPrintPDF: false});
     }
 
     function pdf(data)
