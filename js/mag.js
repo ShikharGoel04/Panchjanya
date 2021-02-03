@@ -50,7 +50,7 @@ window.onload=function(){
                 {
                     if((magid==data['magazine'][i]['id']))
                      {
-                          disp='<h4 class="m-0" style="font-weight: 600;">      %title%  </h4>    <h5 class="mb-4 mt-0">      By %author%  %date%   </h5>'
+                          disp='<h3 class="h3heading">      %title%  </h3>    <h5 class="mb-2 mt-0">      By %author%  %date%   </h5>'
                           var newhtml = disp.replace('%title%',data['magazine'][i]['title']);
                           newhtml = newhtml.replace('%date%',formatDatee);
                           newhtml = newhtml.replace('%author%',data['magazine'][i]['author']);
@@ -61,7 +61,7 @@ window.onload=function(){
                  }
                 else if((panch==true))
                 {
-                        disp='<h4 class="m-0" style="font-weight: 600;">      %title%  </h4>    <h5 class="mb-4 mt-0">      By %author%  %date%   </h5>'
+                        disp='<h3 class="h3heading">      %title%  </h3>    <h5 class="mb-2 mt-0">      By %author%  %date%   </h5>'
                         var newhtml = disp.replace('%title%',data['magazine'][i]['title']);
                         newhtml = newhtml.replace('%date%',formatDatee);
                         newhtml = newhtml.replace('%author%',data['magazine'][i]['author']);
@@ -73,7 +73,7 @@ window.onload=function(){
               if(panch==true)
               {
                  
-                var html = '  <div class="my-3 ml-1">            <div class="row">        <div class="col-sm-5">         <a id=%id% onclick="pdfview(%idd%)" href="magazine.html">             <img src=%image% style="height: 120px; width: 75%;">  </a>     </div>             <div class="col-sm-6">                <div class="mt-0">                  <h4 class="mt-0" style="font-weight:600;">                    %title%                  </h4>                  <h5 class="mt-0">                    By %author% %date%                  </h5>                </div>              </div>            </div>            <hr style="border-top: 1.8px solid #eee;">          </div>';
+                var html = '  <div class="my-3 ml-1">            <div class="row">        <div class="col-sm-5 pr-0">         <a id=%id% onclick="pdfview(%idd%)" href="magazine.html">             <img src=%image% style="height: 135px; width: 70%;">  </a>     </div>             <div class="col-sm-6 pl-0">                <div class="mt-0">                  <h4 class="mt-0" style="font-weight:600;">                    %title%                  </h4>                  <h5 class="mt-0">                    By %author% %date%                  </h5>                </div>              </div>            </div>            <hr style="border-top: 1.8px solid #eee;">          </div>';
                 
                 var newhtml = html.replace('%title%',data['magazine'][i]['title']);
                 newhtml = newhtml.replace('%id%',data['magazine'][i]['id']);
@@ -86,7 +86,7 @@ window.onload=function(){
               }
               else if(org==true)
               {
-                var html = '  <div class="my-3 ml-1">            <div class="row">        <div class="col-sm-5">         <a id=%id% onclick="pdfview(%idd%)" href="magazine.html">             <img src=%image% style="height: 120px; width: 75%;">  </a>     </div>             <div class="col-sm-6">                <div class="mt-0">                  <h4 class="mt-0" style="font-weight:600;">                    %title%                  </h4>                  <h5 class="mt-0">                    By %author% %date%                  </h5>                </div>              </div>            </div>            <hr style="border-top: 1.8px solid #eee;">          </div>';
+                var html = '  <div class="my-3 ml-1">            <div class="row">        <div class="col-sm-5 pr-0">         <a id=%id% onclick="pdfview(%idd%)" href="magazine.html">             <img src=%image% style="height: 135px; width: 70%;">  </a>     </div>             <div class="col-sm-6 pl-0">                <div class="mt-0">                  <h4 class="mt-0" style="font-weight:600;">                    %title%                  </h4>                  <h5 class="mt-0">                    By %author% %date%                  </h5>                </div>              </div>            </div>            <hr style="border-top: 1.8px solid #eee;">          </div>';
                 
                 var newhtml = html.replace('%title%',data['magazine'][i]['title']);
                 newhtml = newhtml.replace('%id%',data['magazine'][i]['id']);

@@ -21,6 +21,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Yusei+Magic&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
   <script src="./js/mag.js"></script>
   <script src="./js/authenticate.js"></script>
   <link rel="stylesheet" href="./css/loader.css">
@@ -87,6 +90,41 @@
   .column {
     width: 100%;
   }
+}
+
+.ulmag{
+    width: 100%;
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+    border-bottom-left-radius: 0.3rem;
+    text-align: center;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.1rem;
+    margin-bottom: 50px;
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: orange;
+    color: white !important;
+}
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+    background-color: orange;
+}
+.nav-pills .nav-link {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-bottom-right-radius: 0rem;
+    border-bottom-left-radius: 0rem;
+    color: orange !important;
+}
+.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
+    color: white !important;
+}
+.h3heading{
+  font-weight: 600;
+   margin-top: 10px;
+   font-family: 'Raleway', sans-serif;
 }
   </style>
 </head>
@@ -155,149 +193,26 @@
 <!-- temporary -->
 
 
-<!-- new Str -->
-<!-- <div class="container" style="margin-left: 80px;">
-<div class="row">
-  <div class="col-sm-9" style="height: 800px;">
-    <h1>
-      Title
-    </h1>
-    <h5 class="mb-4 mt-0">
-      by author date
-    </h5>
-    <div id="adobe-dc-view" style="height: 90%;"></div>
-  </div>
-  <div class="col-sm-3" >
-    <ul class="nav nav-pills" style="margin-top:20px; margin-bottom: 20px; width: 100%;">
-      <li class="nav-item"><a class="nav-link active" href="#panch" role="tab" data-toggle="tab">Panchjanya</a></li>
-      <li class="nav-item"><a class="nav-link" href="#org" role="tab" data-toggle="tab">Organizer</a></li>
-      </ul>
-      <div class="tab-content">
-      <div class="tab-pane fade show active panch" role="tabpanel" id="panch">
 
-
-        <div class="my-3 ml-1">
-          <div class="row">
-            <div class="col-sm-5">
-              <img src="./images/mag1.JPG" style="height: 110px; width: 100%;">
-            </div>
-            <div class="col-sm-6">
-              <div class="mt-0">
-                <h2 class="mt-0">
-                  Tittle
-                </h2>
-                <h5 class="mt-0">
-                  by author date
-                </h5>
-              </div>
-            </div>
-          </div>
-          <hr>
-        </div>
-
-
- 
-
-        <div class="my-3">
-          <div class="row">
-            <div class="col-sm-5">
-              <img src="./images/mag1.JPG" style="height: 110px; width: 100%;">
-            </div>
-            <div class="col-sm-6">
-              <div class="mt-0">
-                <h2 class="mt-0">
-                  Tittle
-                </h2>
-                <h5 class="mt-0">
-                  by author date
-                </h5>
-              </div>
-            </div>
-          </div>
-          <hr>
-        </div>
-
-
- 
-
-
-        <div class="my-3">
-          <div class="row">
-            <div class="col-sm-5">
-              <img src="./images/mag1.JPG" style="height: 110px; width: 100%;">
-            </div>
-            <div class="col-sm-6">
-              <div class="mt-0">
-                <h2 class="mt-0">
-                  Tittle
-                </h2>
-                <h5 class="mt-0">
-                  by author date
-                </h5>
-              </div>
-            </div>
-          </div>
-          <hr>
-        </div>
-
-
- 
-
-
-        <div class="my-3">
-          <div class="row">
-            <div class="col-sm-5">
-              <img src="./images/mag1.JPG" style="height: 110px; width: 100%;">
-            </div>
-            <div class="col-sm-6">
-              <div class="mt-0">
-                <h2 class="mt-0">
-                  Tittle
-                </h2>
-                <h5 class="mt-0">
-                  by author date
-                </h5>
-              </div>
-            </div>
-          </div>
-          <hr>
-        </div>
-
-
- 
-
-
-        </div>
-        <div class="tab-pane fade show org" role="tabpanel" id="org">
-          <h3>Peter Pan <small>Chief  Officer</small></h3>
-         </div>
-         </div>
-
-</div>
-</div>
-
-</div> -->
-
-<!-- new Str -->
 
 
 
 <!-- temp1 -->
 
 
-<div class="row mx-0 mt-5 justify-content-between" style="width: 100%;">
-  <div class="col-sm-8" style="height: 1000px; margin-left: 40px;">
-    <div class="magheading">
+<div class="row mx-0 justify-content-between" style="width: 100%; margin-top:60px;">
+  <div class="col-sm-8" style="height: 1000px; margin-left: 25px; margin-right: 15px;">
+    <div class="magheading" style="margin-bottom: 20px;">
     
     </div>
     <div id="adobe-dc-view" class="mt-3" style="height: 70%;"></div>
   </div>
     
 
-  <div class="col-sm-3 ml-4">
-      <ul class="nav nav-pills" style="margin-bottom: 20px; width: 100%; font-size:2rem;">
-        <li class="nav-item active"><a class="nav-link" id="panch1"  href="#panch"  role="tab" data-toggle="tab"  onClick="return saveTabSelect(this);">Panchjanya</a></li>
-        <li class="nav-item"><a class="nav-link" id="org1"   href="#org" role="tab" data-toggle="tab"  onClick="return saveTabSelect(this);">Organizer</a></li>
+  <div class="col-sm-3 ml-4 px-0">
+      <ul class="nav nav-pills ulmag" >
+        <li class="nav-item active" style="width: 50%;"><a class="nav-link" id="panch1" style="border-bottom: 7px solid orange;"   href="#panch"  role="tab" data-toggle="tab"  onClick="return saveTabSelect(this);">पाञ्चजन्य</a></li>
+        <li class="nav-item ml-0" style="width: 49.23%;"><a class="nav-link" id="org1" style="border-bottom: 7px solid orange;"   href="#org" role="tab" data-toggle="tab"  onClick="return saveTabSelect(this);">Organiser</a></li>
       </ul>
       <div class="tab-content">
 
