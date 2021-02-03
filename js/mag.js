@@ -47,18 +47,37 @@ window.onload=function(){
                          magdata=data['magazine'][i]['data'];
                 }
 
-              
-                var html = '  <div class="my-3 ml-1">            <div class="row">        <div class="col-sm-5">         <a id=%id% onclick="pdfview(%idd%)" href="magazine.html">             <img src=%image% style="height: 110px; width: 80%;">  </a>     </div>             <div class="col-sm-6">                <div class="mt-0">                  <h2 class="mt-0">                    %title%                  </h2>                  <h5 class="mt-0">                    by %author% %date%                  </h5>                </div>              </div>            </div>            <hr>          </div';
+              if(panch==true)
+              {
+                  if(magid==i)
+                  {
+                      continue;
+                  }
+                var html = '  <div class="my-3 ml-1">            <div class="row">        <div class="col-sm-5">         <a id=%id% onclick="pdfview(%idd%)" href="magazine.html">             <img src=%image% style="height: 120px; width: 75%;">  </a>     </div>             <div class="col-sm-6">                <div class="mt-0">                  <h4 class="mt-0" style="font-weight:600;">                    %title%                  </h4>                  <h5 class="mt-0">                    By %author% %date%                  </h5>                </div>              </div>            </div>            <hr style="border-top: 1.8px solid #eee;">          </div>';
                 
-               var newhtml = html.replace('%title%',data['magazine'][i]['title']);
-               newhtml = newhtml.replace('%id%',data['magazine'][i]['id']);
-                newhtml = newhtml.replace('%image%',data['magazine'][i]['image']);
-                newhtml = newhtml.replace('%date%',data['magazine'][i]['date']);
-                newhtml = newhtml.replace('%author%',data['magazine'][i]['author']);
-                newhtml = newhtml.replace('%idd%',data['magazine'][i]['id']);
-                console.log(newhtml);
-                document.querySelector('.panch').insertAdjacentHTML('beforeend' , newhtml);
-                console.log(i);
+                var newhtml = html.replace('%title%',data['magazine'][i]['title']);
+                newhtml = newhtml.replace('%id%',data['magazine'][i]['id']);
+                 newhtml = newhtml.replace('%image%',data['magazine'][i]['image']);
+                 newhtml = newhtml.replace('%date%',data['magazine'][i]['date']);
+                 newhtml = newhtml.replace('%author%',data['magazine'][i]['author']);
+                 newhtml = newhtml.replace('%idd%',data['magazine'][i]['id']);
+                 document.querySelector('.panch').insertAdjacentHTML('beforeend' , newhtml);
+                 console.log(i);
+              }
+              else if(org==true)
+              {
+                var html = '  <div class="my-3 ml-1">            <div class="row">        <div class="col-sm-5">         <a id=%id% onclick="pdfview(%idd%)" href="magazine.html">             <img src=%image% style="height: 120px; width: 75%;">  </a>     </div>             <div class="col-sm-6">                <div class="mt-0">                  <h4 class="mt-0" style="font-weight:600;">                    %title%                  </h4>                  <h5 class="mt-0">                    By %author% %date%                  </h5>                </div>              </div>            </div>            <hr style="border-top: 1.8px solid #eee;">          </div>';
+                
+                var newhtml = html.replace('%title%',data['magazine'][i]['title']);
+                newhtml = newhtml.replace('%id%',data['magazine'][i]['id']);
+                 newhtml = newhtml.replace('%image%',data['magazine'][i]['image']);
+                 newhtml = newhtml.replace('%date%',data['magazine'][i]['date']);
+                 newhtml = newhtml.replace('%author%',data['magazine'][i]['author']);
+                 newhtml = newhtml.replace('%idd%',data['magazine'][i]['id']);
+                 document.querySelector('.org').insertAdjacentHTML('beforeend' , newhtml);
+                 console.log(i);
+              }
+
             }
             
                     pdf(magdata);
@@ -82,7 +101,7 @@ window.onload=function(){
         var adobeDCView = new AdobeDC.View({clientId: "e7e07ed1739446638a1536a1cb32ea1f", divId: "adobe-dc-view"});
         adobeDCView.previewFile({
             content:{location: {url: data1}},
-            metaData:{fileName: "Organiser 07 February 2021"}
+            metaData:{fileName: "E-Magazine"}
         }, {showAnnotationTools: false, showLeftHandPanel: false, dockPageControls: false, 
 			showDownloadPDF: false, showPrintPDF: false});
     }
