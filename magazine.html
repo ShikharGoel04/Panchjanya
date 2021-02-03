@@ -287,29 +287,26 @@
 
 <div class="row mx-0 mt-5 justify-content-between" style="width: 100%;">
   <div class="col-sm-8" style="height: 1000px; margin-left: 40px;">
-    <h1 class="m-0" style="font-weight: 600;">
-      Title
-    </h1>
-    <h5 class="mb-4 mt-0">
-      By author date
-    </h5>
+    <div class="magheading">
+    
+    </div>
     <div id="adobe-dc-view" class="mt-3" style="height: 70%;"></div>
   </div>
     
 
   <div class="col-sm-3 ml-4">
       <ul class="nav nav-pills" style="margin-bottom: 20px; width: 100%; font-size:2rem;">
-        <li class="nav-item"><a class="nav-link" href="#panch" role="tab" data-toggle="tab">Panchjanya</a></li>
-        <li class="nav-item"><a class="nav-link" href="#org" role="tab" data-toggle="tab">Organizer</a></li>
+        <li class="nav-item"><a class="nav-link" id="panch1"  href="#panch"  role="tab" data-toggle="tab"  onClick="return saveTabSelect(this);">Panchjanya</a></li>
+        <li class="nav-item"><a class="nav-link" id="org1"   href="#org" role="tab" data-toggle="tab"  onClick="return saveTabSelect(this);">Organizer</a></li>
       </ul>
       <div class="tab-content">
 
-        <div class="tab-pane fade show active panch" role="tabpanel" id="panch">
+        <div class="tab-pane fade in active panch" role="tabpanel" id="panch">
 
 
         </div>
 
-        <div class="tab-pane fade show org" role="tabpanel" id="org">
+        <div class="tab-pane fade  org" role="tabpanel" id="org">
 
         </div>
 

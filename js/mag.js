@@ -1,11 +1,21 @@
 var data1;
 var adobe=false;
 
+function formatDate (input) {
+    var trimmedString=input.substring(0,10);
+    var datePart = trimmedString.split("-",3),
+    year = datePart[0], // get only two digits
+    month = datePart[1],
+     day = datePart[2];
+    return day+'/'+month+'/'+year;
+  }
+
 function hideLoader() {
     $('#loading').hide();
 }
 window.onload=function(){
     var b=baseUrl();
+    
     if(localStorage.getItem("access_token") === null)
     {
 		window.location="index.html";
@@ -29,36 +39,46 @@ window.onload=function(){
          .then((data) => {
              var magid=localStorage.getItem("data");
              var magdata;
+             var disp;
             for(const i in data['magazine'])
             {
                 
                 var panch=data['magazine'][i]['is_Panchjanya'];
                 var org=data['magazine'][i]['is_Organizer'];
+                var formatDatee=formatDate(data['magazine'][i]['date']);
                 if(magid!=null)
                 {
                     if((magid==data['magazine'][i]['id']))
                      {
+                          disp='<h4 class="m-0" style="font-weight: 600;">      %title%  </h4>    <h5 class="mb-4 mt-0">      By %author%  %date%   </h5>'
+                          var newhtml = disp.replace('%title%',data['magazine'][i]['title']);
+                          newhtml = newhtml.replace('%date%',formatDatee);
+                          newhtml = newhtml.replace('%author%',data['magazine'][i]['author']);
+                          document.querySelector('.magheading').insertAdjacentHTML('beforeend' , newhtml);
                           magdata=data['magazine'][i]['data'];
+                          continue;
                     }
                  }
                 else if((panch==true))
                 {
-                   
+                        disp='<h4 class="m-0" style="font-weight: 600;">      %title%  </h4>    <h5 class="mb-4 mt-0">      By %author%  %date%   </h5>'
+                        var newhtml = disp.replace('%title%',data['magazine'][i]['title']);
+                        newhtml = newhtml.replace('%date%',formatDatee);
+                        newhtml = newhtml.replace('%author%',data['magazine'][i]['author']);
+                        document.querySelector('.magheading').insertAdjacentHTML('beforeend' , newhtml);
                          magdata=data['magazine'][i]['data'];
+                         continue;
                 }
 
               if(panch==true)
               {
-                  if(magid==i)
-                  {
-                      continue;
-                  }
+                 
                 var html = '  <div class="my-3 ml-1">            <div class="row">        <div class="col-sm-5">         <a id=%id% onclick="pdfview(%idd%)" href="magazine.html">             <img src=%image% style="height: 120px; width: 75%;">  </a>     </div>             <div class="col-sm-6">                <div class="mt-0">                  <h4 class="mt-0" style="font-weight:600;">                    %title%                  </h4>                  <h5 class="mt-0">                    By %author% %date%                  </h5>                </div>              </div>            </div>            <hr style="border-top: 1.8px solid #eee;">          </div>';
                 
                 var newhtml = html.replace('%title%',data['magazine'][i]['title']);
                 newhtml = newhtml.replace('%id%',data['magazine'][i]['id']);
                  newhtml = newhtml.replace('%image%',data['magazine'][i]['image']);
-                 newhtml = newhtml.replace('%date%',data['magazine'][i]['date']);
+                 newhtml = newhtml.replace('%date%',formatDatee);
                  newhtml = newhtml.replace('%author%',data['magazine'][i]['author']);
                  newhtml = newhtml.replace('%idd%',data['magazine'][i]['id']);
                  document.querySelector('.panch').insertAdjacentHTML('beforeend' , newhtml);
@@ -71,7 +91,7 @@ window.onload=function(){
                 var newhtml = html.replace('%title%',data['magazine'][i]['title']);
                 newhtml = newhtml.replace('%id%',data['magazine'][i]['id']);
                  newhtml = newhtml.replace('%image%',data['magazine'][i]['image']);
-                 newhtml = newhtml.replace('%date%',data['magazine'][i]['date']);
+                 newhtml = newhtml.replace('%date%',formatDatee);
                  newhtml = newhtml.replace('%author%',data['magazine'][i]['author']);
                  newhtml = newhtml.replace('%idd%',data['magazine'][i]['id']);
                  document.querySelector('.org').insertAdjacentHTML('beforeend' , newhtml);
@@ -120,3 +140,14 @@ window.onload=function(){
     document.addEventListener("adobe_dc_view_sdk.ready", function(){ 
         adobe=true;
     });
+
+    function saveTabSelect(e) {
+        localStorage.setItem("tagSelected", e.id);
+        return true;
+      }
+
+      function retrieveSelected(){
+        var curTag = localStorage.getItem("tagSelected");
+        var element = document.getElementById(curTag);
+        element.classList.add("active"); 
+      }
