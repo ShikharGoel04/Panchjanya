@@ -1,5 +1,6 @@
 var data1;
 var adobe=false;
+
 function hideLoader() {
     $('#loading').hide();
 }
@@ -26,30 +27,41 @@ window.onload=function(){
         })
          .then((response) => response.json())
          .then((data) => {
-             const magid=0;
+             var magid=localStorage.getItem("data");
+             var magdata;
             for(const i in data['magazine'])
             {
                 
                 var panch=data['magazine'][i]['is_Panchjanya'];
                 var org=data['magazine'][i]['is_Organizer'];
-                if(panch==true)
+                if(magid!=null)
+                {
+                    if((magid==data['magazine'][i]['id']))
+                     {
+                          magdata=data['magazine'][i]['data'];
+                    }
+                 }
+                else if((panch==true))
                 {
                    
-                        var data=data['magazine'][i]['data'];
-                         pdf(data);
+                         magdata=data['magazine'][i]['data'];
                 }
 
-                console.log(i , data['magazine'][i] );
-                var html = '<div class="col-sm-4"><h4 class="hfont" style="text-align: center;">%title%</h4><a  id = %id% onclick="reply_quick(this.id)" href="magazineview.html"><img src="%image%" alt="organiser" style="width:100%"></a><p style="text-align: center;"class="datefont" >%date%</p><h4 class="dfont" style="text-align: center;">%author%</h4></div>';
-                var newhtml = html.replace('%id%',data['magazine'][i]['id']);
-                newhtml = newhtml.replace('%title%',data['magazine'][i]['title']);
+              
+                var html = '  <div class="my-3 ml-1">            <div class="row">        <div class="col-sm-5">         <a id=%id% onclick="pdfview(%idd%)" href="magazine.html">             <img src=%image% style="height: 110px; width: 80%;">  </a>     </div>             <div class="col-sm-6">                <div class="mt-0">                  <h2 class="mt-0">                    %title%                  </h2>                  <h5 class="mt-0">                    by %author% %date%                  </h5>                </div>              </div>            </div>            <hr>          </div';
+                
+               var newhtml = html.replace('%title%',data['magazine'][i]['title']);
+               newhtml = newhtml.replace('%id%',data['magazine'][i]['id']);
                 newhtml = newhtml.replace('%image%',data['magazine'][i]['image']);
                 newhtml = newhtml.replace('%date%',data['magazine'][i]['date']);
                 newhtml = newhtml.replace('%author%',data['magazine'][i]['author']);
-        
+                newhtml = newhtml.replace('%idd%',data['magazine'][i]['id']);
+                console.log(newhtml);
+                document.querySelector('.panch').insertAdjacentHTML('beforeend' , newhtml);
                 console.log(i);
             }
-                    i++;
+            
+                    pdf(magdata);
             
             })
             .catch((error) => {
@@ -58,6 +70,11 @@ window.onload=function(){
         
         });
     }
+}
+    function pdfview(data)
+
+    {   //call either orgMagfetch or panchfetchMag function depending on the value stored in local storage. Store in local storage on cick of button Panch or org. 
+        window.localStorage.setItem("data",data);
     }
     function previewFile()
 
@@ -77,13 +94,10 @@ window.onload=function(){
         {
             previewFile();
         }
+       
+      
     }
 
     document.addEventListener("adobe_dc_view_sdk.ready", function(){ 
         adobe=true;
     });
-
-    
-
-
-   
