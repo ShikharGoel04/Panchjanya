@@ -42,6 +42,7 @@ window.onload=function(){
              var magdata;
              var disp;
              var flag=0;
+             var p=0,o=0;
            
             for(const i in data['magazine'])
             {
@@ -53,7 +54,7 @@ window.onload=function(){
                 {
                     if((magid==data['magazine'][i]['id']))
                      {
-                          disp='<h3 class="h3heading">      %title%  </h3>    <h5 class="mb-2 mt-0">      By %author%  %date%   </h5>';
+                          disp='<h3 class="h3heading mb-2">      %title%  </h3>    <h6 style="color: #7D7D7D;" class="mb-2 mt-0">      By %author%  %date%   </h6>';
                           var newhtml = disp.replace('%title%',data['magazine'][i]['title']);
                           newhtml = newhtml.replace('%date%',formatDatee);
                           newhtml = newhtml.replace('%author%',data['magazine'][i]['author']);
@@ -64,7 +65,7 @@ window.onload=function(){
                  }
                 else if((panch==true)&&(flag==0))
                 {
-                        disp='<h3 class="h3heading">      %title%  </h3>    <h5 class="mb-2 mt-0">      By %author%  %date%   </h5>';
+                        disp='<h3 class="h3heading mb-2">      %title%  </h3>    <h6 style="color: #7D7D7D;" class="mb-2 mt-0">      By %author%  %date%   </h6>';
                         var newhtml = disp.replace('%title%',data['magazine'][i]['title']);
                         newhtml = newhtml.replace('%date%',formatDatee);
                         newhtml = newhtml.replace('%author%',data['magazine'][i]['author']);
@@ -76,8 +77,9 @@ window.onload=function(){
 
               if(panch==true)
               {
+
                  
-                var html = '  <div class="my-3 ml-1">            <div class="row">        <div class="col-sm-5 pr-0">         <a id=%id% onclick="pdfview(%idd%)" href="magazine.html">             <img src=%image% style="height: 135px; width: 70%;">  </a>     </div>             <div class="col-sm-6 pl-0">                <div class="mt-0">                  <h4 class="mt-0" style="font-weight:600;">                    %title%                  </h4>                  <h5 class="mt-0">                    By %author% %date%                  </h5>                </div>              </div>            </div>            <hr style="border-top: 1.8px solid #eee;">          </div>';
+                var html = '  <div class="my-3 ml-1">            <div class="row">        <div class="col-sm-5 pr-0">         <a id=%id% onclick="pdfview(%idd%)" href="magazine.html">             <img src=%image% style="height: 135px; width: 70%;">  </a>     </div>             <div class="col-sm-6 pl-0">                <div class="mt-0">                  <h4 class="mt-0 sidehead mb-2" >                    %title%                  </h4>                  <h6 class="mt-0 datefont">                    By %author% <br> %date%                  </h6>                </div>              </div>            </div>            <hr style="border-top: 1.8px solid #eee;">          </div>';
                 
                 var newhtml = html.replace('%title%',data['magazine'][i]['title']);
                 newhtml = newhtml.replace('%id%',data['magazine'][i]['id']);
@@ -85,12 +87,22 @@ window.onload=function(){
                  newhtml = newhtml.replace('%date%',formatDatee);
                  newhtml = newhtml.replace('%author%',data['magazine'][i]['author']);
                  newhtml = newhtml.replace('%idd%',data['magazine'][i]['id']);
-                 document.querySelector('.panch').insertAdjacentHTML('beforeend' , newhtml);
+                 if(p<4)
+                 {
+                    document.querySelector('#panchA').insertAdjacentHTML('beforeend' , newhtml);
+                 }
+                 else if(p>3)
+                 {
+                    document.querySelector('#panchB').insertAdjacentHTML('beforeend' , newhtml);
+                 }
+
                  console.log(i);
+                 p++;
+
               }
               else if(org==true)
               {
-                var html = '  <div class="my-3 ml-1">            <div class="row">        <div class="col-sm-5 pr-0">         <a id=%id% onclick="pdfview(%idd%)" href="magazine.html">             <img src=%image% style="height: 135px; width: 70%;">  </a>     </div>             <div class="col-sm-6 pl-0">                <div class="mt-0">                  <h4 class="mt-0" style="font-weight:600;">                    %title%                  </h4>                  <h5 class="mt-0">                    By %author% %date%                  </h5>                </div>              </div>            </div>            <hr style="border-top: 1.8px solid #eee;">          </div>';
+                var html = '  <div class="my-3 ml-1">            <div class="row">        <div class="col-sm-5 pr-0">         <a id=%id% onclick="pdfview(%idd%)" href="magazine.html">             <img src=%image% style="height: 135px; width: 70%;">  </a>     </div>             <div class="col-sm-6 pl-0">                <div class="mt-0">                  <h4 class="mt-0 sidehead mb-2">                    %title%                  </h4>                  <h6 class="mt-0 datefont">                    By %author% <br> %date%                  </h6>                </div>              </div>            </div>            <hr style="border-top: 1.8px solid #eee;">          </div>';
                 
                 var newhtml = html.replace('%title%',data['magazine'][i]['title']);
                 newhtml = newhtml.replace('%id%',data['magazine'][i]['id']);
@@ -101,6 +113,7 @@ window.onload=function(){
                  document.querySelector('.org').insertAdjacentHTML('beforeend' , newhtml);
                  console.log(i);
               }
+
 
             }
 
@@ -114,7 +127,9 @@ window.onload=function(){
            });
         
         });
+        setTimeout(hideLoader,2000);
     }
+
 }
     function pdfview(data)
 

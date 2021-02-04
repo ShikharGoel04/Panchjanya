@@ -23,25 +23,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
   <script src="./js/mag.js"></script>
   <script src="./js/authenticate.js"></script>
   <link rel="stylesheet" href="./css/loader.css">
   <link rel="stylesheet" href="./css/styles.css">
   <link rel="stylesheet" href="./css/newloader.css">
   <style>
-    @media screen and (max-width: 500px) {
-  .resp {
-    width: 100%;
-
-    
-  }
-  .respMag{
-    width:60% !important;
-    display:block;
-    margin:auto;
-  }
-  }
   .nav-link{
     color:black !important;
   }
@@ -49,55 +37,17 @@
       background-color: orange !important;
       
     }
-    .hfont{
-      font-family: 'Merriweather', serif;
-    }
     .datefont{
-      font-family: 'Roboto', sans-serif;
+      color: #7D7D7D;
+
     }
-    .dfont{
-      font-family: 'Yusei Magic', sans-serif;
-    }
-  .fakeimg {
-    height: 300px;
-    width: 500px;
-    background: #aaa;
-  }
-  .fakeimg2 {
-    height: 200px;
-    width: 250px;
-    background: #aaa;
-  }
+
 * {
   box-sizing: border-box;
 }
 
-.column {
-  float: left;
-  width: 33.33%;
-  padding: 5px;
-}
-
-/* Clearfix (clear floats) */
-.row1::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 500px) {
-  .column {
-    width: 100%;
-  }
-}
-
 .ulmag{
     width: 100%;
-    border-top-left-radius: 0.3rem;
-    border-top-right-radius: 0.3rem;
-    border-bottom-right-radius: 0.3rem;
-    border-bottom-left-radius: 0.3rem;
     text-align: center;
     font-weight: 500;
     font-family: 'Poppins', sans-serif;
@@ -112,8 +62,8 @@
     background-color: orange;
 }
 .nav-pills .nav-link {
-    border-top-left-radius: 0.5rem;
-    border-top-right-radius: 0.5rem;
+    border-top-left-radius: 0.75rem;
+    border-top-right-radius: 0.75rem;
     border-bottom-right-radius: 0rem;
     border-bottom-left-radius: 0rem;
     color: orange !important;
@@ -125,14 +75,31 @@
   font-weight: 600;
    margin-top: 10px;
    font-family: 'Raleway', sans-serif;
+   font-size: 2.7rem;
 }
+.sidehead{
+  font-family: 'Raleway', sans-serif;
+}
+.aborder{
+  border-bottom: 8px solid orange;
+}
+a#org1 {
+    border-bottom-right-radius: 0.7rem;
+}
+a#panch1 {
+    border-bottom-left-radius: 0.7rem;
+}
+@media screen and (max-width: 935px) {
+      .mob {
+        display: none;
+      }
+}
+
   </style>
 </head>
 <body>
 
-<!-- <div class="jumbotron text-center" style="margin-bottom:0" style="height: 100px;">
-  <img class="resp" src="https://www.organiser.org//Encyc/2019/2/7/organiser-logo.png">
-</div> -->
+
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <a class="navbar-brand" style="padding-top: 0; height: 100%; padding-bottom: 2px;" href="index.html"><img
@@ -199,7 +166,7 @@
 
 <!-- temp1 -->
 
-
+<div class="mob m-0 p-0">
 <div class="row mx-0 justify-content-between" style="width: 100%; margin-top:60px;">
   <div class="col-sm-8" style="height: 1000px; margin-left: 25px; margin-right: 15px;">
     <div class="magheading" style="margin-bottom: 20px;">
@@ -211,14 +178,21 @@
 
   <div class="col-sm-3 ml-4 px-0">
       <ul class="nav nav-pills ulmag" >
-        <li class="nav-item active" style="width: 50%;"><a class="nav-link" id="panch1" style="border-bottom: 7px solid orange;"   href="#panch"  role="tab" data-toggle="tab"  onClick="return saveTabSelect(this);">पाञ्चजन्य</a></li>
-        <li class="nav-item ml-0" style="width: 49.23%;"><a class="nav-link" id="org1" style="border-bottom: 7px solid orange;"   href="#org" role="tab" data-toggle="tab"  onClick="return saveTabSelect(this);">Organiser</a></li>
+        <li class="nav-item active" style="width: 50%;"><a class="nav-link aborder" id="panch1"  href="#panch"  role="tab" data-toggle="tab"  onClick="return saveTabSelect(this);">पाञ्चजन्य</a></li>
+        <li class="nav-item ml-0" style="width: 49.23%;"><a class="nav-link aborder" id="org1" href="#org" role="tab" data-toggle="tab"  onClick="return saveTabSelect(this);">Organiser</a></li>
       </ul>
       <div class="tab-content">
 
-        <div class="tab-pane fade in active panch" role="tabpanel" id="panch">
+        <div class="tab-pane fade in active panch" role="tabpanel">
+          <div class="m-0 p-0" id="panchA">
 
-
+          </div>
+          <button class="btn btn-primary btn-lg">
+            Load More
+          </button>
+          <div class="m-0 p-0" id="panchB">
+            
+          </div>
         </div>
 
         <div class="tab-pane fade  org" role="tabpanel" id="org">
@@ -232,28 +206,12 @@
   </div>
 </div>
 
-
+</div>
 
 
 <!-- temporary -->
 
-<!-- <div class="container" style="margin-top:30px">
-  <div class="row">
-    <div class="col-sm-2">
- 
-    </div>
-    <br>
-    <div class="col-sm-8" style="padding-left: 5%;" >
-        <div class="row1">
-            
 
-            
-            
-      
-    </div>
-  </div>
-</div>
-</div> -->
 
 
 <!-- footer -->
@@ -309,7 +267,7 @@
 	});
 });
 
-    setTimeout(hideLoader,2500);
+
 
 </script>
 <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
