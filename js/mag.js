@@ -37,6 +37,7 @@ window.onload=function(){
         })
          .then((response) => response.json())
          .then((data) => {
+          
              var magid=localStorage.getItem("data");
              var magdata;
              var disp;
@@ -103,7 +104,8 @@ window.onload=function(){
 
             }
 
-                    
+            retrieveSelected();
+                   
                     pdf(magdata);
             
             })
@@ -151,19 +153,17 @@ window.onload=function(){
       }
 
       function retrieveSelected(){
-        var curTag = localStorage.getItem("tagSelected");
-        // if(curTag=="panch1")
-        // {
-        //     document.getElementById("panch").style.display='block';
-        
-        // }
-        // if(curTag=="org1")
-        // {
-        //     document.getElementById("org").style.display='block';
-        
-        // }
-
+        var curTag;
+          if(localStorage.getItem("tagSelected")===null)
+          {
+                curTag="panch1";
+          }
+          else
+          {
+          curTag = localStorage.getItem("tagSelected");
+          }
         
         var element = document.getElementById(curTag);
+        element.click();
         element.classList.add("active"); 
       }
