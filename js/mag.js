@@ -40,6 +40,8 @@ window.onload=function(){
              var magid=localStorage.getItem("data");
              var magdata;
              var disp;
+             var flag=0;
+           
             for(const i in data['magazine'])
             {
                 
@@ -50,7 +52,7 @@ window.onload=function(){
                 {
                     if((magid==data['magazine'][i]['id']))
                      {
-                          disp='<h3 class="h3heading">      %title%  </h3>    <h5 class="mb-2 mt-0">      By %author%  %date%   </h5>'
+                          disp='<h3 class="h3heading">      %title%  </h3>    <h5 class="mb-2 mt-0">      By %author%  %date%   </h5>';
                           var newhtml = disp.replace('%title%',data['magazine'][i]['title']);
                           newhtml = newhtml.replace('%date%',formatDatee);
                           newhtml = newhtml.replace('%author%',data['magazine'][i]['author']);
@@ -59,14 +61,15 @@ window.onload=function(){
                           continue;
                     }
                  }
-                else if((panch==true))
+                else if((panch==true)&&(flag==0))
                 {
-                        disp='<h3 class="h3heading">      %title%  </h3>    <h5 class="mb-2 mt-0">      By %author%  %date%   </h5>'
+                        disp='<h3 class="h3heading">      %title%  </h3>    <h5 class="mb-2 mt-0">      By %author%  %date%   </h5>';
                         var newhtml = disp.replace('%title%',data['magazine'][i]['title']);
                         newhtml = newhtml.replace('%date%',formatDatee);
                         newhtml = newhtml.replace('%author%',data['magazine'][i]['author']);
                         document.querySelector('.magheading').insertAdjacentHTML('beforeend' , newhtml);
                          magdata=data['magazine'][i]['data'];
+                         flag=1;
                          continue;
                 }
 
@@ -99,7 +102,8 @@ window.onload=function(){
               }
 
             }
-            
+
+                    
                     pdf(magdata);
             
             })
@@ -148,6 +152,18 @@ window.onload=function(){
 
       function retrieveSelected(){
         var curTag = localStorage.getItem("tagSelected");
+        // if(curTag=="panch1")
+        // {
+        //     document.getElementById("panch").style.display='block';
+        
+        // }
+        // if(curTag=="org1")
+        // {
+        //     document.getElementById("org").style.display='block';
+        
+        // }
+
+        
         var element = document.getElementById(curTag);
         element.classList.add("active"); 
       }
