@@ -42,7 +42,6 @@ window.onload=function(){
              var magdata;
              var disp;
              var flag=0;
-             var p=0,o=0;
            
             for(const i in data['magazine'])
             {
@@ -77,7 +76,6 @@ window.onload=function(){
 
               if(panch==true)
               {
-
                  
                 var html = '  <div class="my-3 ml-1">            <div class="row">        <div class="col-sm-5 pr-0">         <a id=%id% onclick="pdfview(%idd%)" href="magazine.html">             <img src=%image% style="height: 135px; width: 70%;">  </a>     </div>             <div class="col-sm-6 pl-0">                <div class="mt-0">                  <h4 class="mt-0 sidehead mb-2" >                    %title%                  </h4>                  <h6 class="mt-0 datefont">                    By %author% <br> %date%                  </h6>                </div>              </div>            </div>            <hr style="border-top: 1.8px solid #eee;">          </div>';
                 
@@ -87,18 +85,8 @@ window.onload=function(){
                  newhtml = newhtml.replace('%date%',formatDatee);
                  newhtml = newhtml.replace('%author%',data['magazine'][i]['author']);
                  newhtml = newhtml.replace('%idd%',data['magazine'][i]['id']);
-                 if(p<4)
-                 {
-                    document.querySelector('#panchA').insertAdjacentHTML('beforeend' , newhtml);
-                 }
-                 else if(p>3)
-                 {
-                    document.querySelector('#panchB').insertAdjacentHTML('beforeend' , newhtml);
-                 }
-
+                 document.querySelector('.panch').insertAdjacentHTML('beforeend' , newhtml);
                  console.log(i);
-                 p++;
-
               }
               else if(org==true)
               {
@@ -143,8 +131,8 @@ window.onload=function(){
         adobeDCView.previewFile({
             content:{location: {url: data1}},
             metaData:{fileName: "E-Magazine"}
-        }, {showAnnotationTools: false, showLeftHandPanel: false, dockPageControls: false, 
-			showDownloadPDF: false, showPrintPDF: false});
+        }, {embedMode: "SIZED_CONTAINER", dockPageControls: false, showDownloadPDF: false, 
+        showPrintPDF: false});
     }
 
     function pdf(data)
