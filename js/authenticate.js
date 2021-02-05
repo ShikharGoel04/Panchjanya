@@ -205,7 +205,7 @@ hideButton();
 		if(access_token)
 		{
 			var mag_sub=localStorage.getItem("magsub");
-			if(mag_sub==0){
+			if(mag_sub==1){
 				window.location="magazine.html";
 			}
 			else if(mag_sub==0){
