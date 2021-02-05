@@ -22,7 +22,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Merriweather&family=Yusei+Magic&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap" rel="stylesheet">
   <script src="./js/mag.js"></script>
   <script src="./js/authenticate.js"></script>
@@ -89,9 +89,14 @@ a#org1 {
 a#panch1 {
     border-bottom-left-radius: 0.7rem;
 }
-@media screen and (max-width: 935px) {
+@media screen and (max-width: 1025px) {
       .mob {
         display: none;
+      }
+}
+@media screen and (min-width: 1025px) {
+      .comp {
+        display:none;
       }
 }
 
@@ -158,7 +163,53 @@ a#panch1 {
 </div>
 </div> -->
 <!-- temporary -->
+<style>
+  .container1 {
+  position: relative;
+  width: 100%;
+}
 
+.container1 img {
+  width: 100%;
+  height: auto;
+}
+
+.container1 .btn1 {
+  position: absolute;
+  left: 35%;
+  right:35%;
+  width: 30%;
+top: 84.93%;
+bottom: 9.35%;
+background-color: white;
+}
+/* .container1 .btn2 {
+  position: absolute;
+  width: 26%;
+right: 16%;
+top: 84.84%;
+bottom: 9.32%;
+background-color: white;
+
+} */
+</style>
+
+<!-- phone view -->
+<div class="container1 comp">
+  <img  src="./images/playstore1.png" alt="Snow" style="width:100%">
+  <a class="btn btn-lg btn1  p-0 shadow" href="https://play.google.com/store/apps/details?id=com.panchjanya.panchjanya&hl=en_IN&gl=US">
+    <img src="./images/google.png">
+  </a>
+  <!-- <button class=" btn btn-lg btn2  p-0 shadow">
+    <img src="./images/apple.png">
+  </button> -->
+
+</div>
+
+
+
+
+<!-- phone view -->
 
 
 
@@ -208,9 +259,7 @@ a#panch1 {
 
 
 <!-- footer -->
-<hr>
-<!-- footer -->
-<footer class="footer" style="width: 100%; position: relative;">
+<footer class="footer mob" style="width: 100%; position: relative;">
   <div class="container">
       <div class="row justify-content-center">             
           <div class="col-sm-4 text-center">
