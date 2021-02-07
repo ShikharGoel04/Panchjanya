@@ -76,9 +76,9 @@ function authenticate()
  .catch((error) => {
      console.log("reset client error-------",error);
 });
-$( "#button" ).fadeIn( 2000, function() {
+$( "#button" ).fadeIn( 1500, function() {
 });
-$( "#otp1" ).fadeIn( 2000, function() {
+$( "#otp1" ).fadeIn( 1500, function() {
 });
 hideButton();
 }	
