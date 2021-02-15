@@ -1,0 +1,89 @@
+.responsive {
+    width: 100%;
+  }
+
+  @media screen and (max-width: 500px) {
+    .resp {
+      width: 100%;
+    }
+  }
+
+  @media screen and (min-width: 0px) and (max-width: 935px) {
+    .mobile {
+      display: block;
+    }
+
+    /* show it on small screens */
+    #computer {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: 935px) {
+    .mobile {
+      display: none;
+    }
+
+    /* hide it elsewhere */
+    #computer {
+      display: block;
+    }
+  }
+  .nav-link {
+    color: black !important;
+  }
+
+  .button1 {
+    background-color: #c5c3c3;
+    width: 100%;
+    color: white;
+    font-weight: 600;
+  }
+
+  .content {
+    font-family: 'Baloo 2', cursive;
+    font-size: 1.5rem;
+    text-align: justify;
+  }
+
+  .category1 {
+    background-color: orange;
+    width: 60%;
+    margin: auto;
+
+    font-size: 2rem;
+    font-weight: 600;
+    color: white !important;
+  }
+
+  .pagination1 {
+    padding: 15px;
+    font-size: 18px;
+  }
+
+  .body {
+    padding-right: 0px;
+  }
+
+  .fontt {
+    font-family: 'Poppins', sans-serif;
+    font-size: 2.6rem;
+
+    color: #191816;
+
+  }
+
+  .rc {
+    border-radius: 25px;
+    padding-top: 4rem;
+  }
+  .btn{
+    outline: none!important;
+  }
+  .newsbtn{
+    font-weight: 400;
+    padding-left: 25px;
+    text-align: left;
+    background-color: #f7f7f7;
+    color: #616161;
+  }

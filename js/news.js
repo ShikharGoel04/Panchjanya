@@ -12,7 +12,7 @@ function hideLoader() {
     $('#loading').hide();
 }
 function newsDisp(){
-    // document.getElementById("loader").style.display='block';
+
 
     
     var b=baseUrl();
@@ -127,7 +127,7 @@ function newsDisp(){
                             {
                                 trimmedString+='. . .';
                             }
-                            disp='<div class="my-2 py-3 border mt-3 row shadow rc justify-content-between"><div class="col-md-5 mx-2"><img class="imgg responsive" style="margin-bottom:10px;" src=%imgsrc% height="300px" width="350px"></div><div class="col-md-6 mx-2 "><a class="anch" onclick="newsview(%i%)" href="newsview.html"><h2 class="mt-0 fontt break">%title%</h2><h5 class="text-muted">by %author% %date%</h5><p class="content" style="color:#222224;">%content%</p></a></div></div>';
+                            disp='<div class="my-2 pb-5 border mt-3 row shadow rc justify-content-between" style="margin-bottom:20px !important;"><div class="col-sm-5 mx-2"><img class="imgg responsive" style="margin-bottom:10px;" src=%imgsrc% height="300px" width="350px"></div><div class="col-sm-6 mx-2 "><a class="anch" onclick="newsview(%i%)" href="newsview.html"><h2 class="mt-0 fontt break">%title%</h2><h5 class="text-muted">by %author% %date%</h5><p class="content" style="color:#222224;">%content%</p></a></div></div>';
                             //var newhtml = html.replace('%id%',data['news'][i]['id']);
                             var newhtml = disp.replace('%title%',data['news'][i]['title']);
                             newhtml = newhtml.replace('%content%',trimmedString);
@@ -199,8 +199,8 @@ function newsDisp(){
                 console.log(data['categories'][j]['categoryName']);
                 if(data['categories'][j]['categoryName']=="All")
                 {
-                    disp3='<button class="btn btn-lg my-2 button1 shadow" id=%id% value=%category1% onclick="category(%idd%)">%category% </button>'; 
-                    disp4='<button class="btn btn-lg my-2 button1 shadow" style="width:80%;" id=%id% value=%category1% onclick="category(%idd%)">%category% </button>'; 
+                    disp3='<button class="btn btn-lg my-4 button1 shadow newsbtn" id=%id% value=%category1% onclick="category(%idd%)">%category% </button>'; 
+                    disp4='<button class="btn btn-lg my-4 button1 shadow newsbtn" style="width:80%;" id=%id% value=%category1% onclick="category(%idd%)">%category% </button>'; 
                     var newhtml7 = disp3.replace('%id%','check'+totalCat+1);
                     var newhtml7 = newhtml7.replace('%idd%','check'+totalCat+1);
                     var newhtml7 = newhtml7.replace('%category1%',data['categories'][j]['categoryName']);
@@ -221,8 +221,8 @@ function newsDisp(){
                 {
                     if(data['categories'][j]["is_Panchjanya"]==true)
                     {
-                        disp2='<button class="btn btn-lg my-2 button1 shadow" id=%id% value=%category1% onclick="category(%idd%)">%category% </button>';
-                        disp1='<button class="btn btn-lg my-2 button1 shadow" style="width:80%;" id=%id% value=%category1% onclick="category(%idd%)">%category% </button>';
+                        disp2='<button class="btn btn-lg my-4 button1 shadow newsbtn" id=%id% value=%category1% onclick="category(%idd%)">%category% </button>';
+                        disp1='<button class="btn btn-lg my-4 button1 shadow newsbtn" style="width:80%;" id=%id% value=%category1% onclick="category(%idd%)">%category% </button>';
                         var newhtml5 = disp1.replace('%id%','check'+totalCat);
                         var newhtml5 = newhtml5.replace('%idd%','check'+totalCat);
                         var newhtml5 = newhtml5.replace('%category1%',data['categories'][j]['categoryName']);
@@ -252,13 +252,18 @@ function newsDisp(){
         //  }
          if(localStorage.getItem("newscategory")=="All")
          {
-            document.getElementById(allid1).style.backgroundColor="orange";
-            document.getElementById(allid2).style.backgroundColor="orange";
+            document.getElementById(allid1).style.backgroundColor="#ED6206";
+            document.getElementById(allid2).style.backgroundColor="#ED6206";
+            document.getElementById(allid1).style.color="#fff";
+            document.getElementById(allid1).style.boxShadow="none !important";
          }
          else
          {
             var active=localStorage.getItem("active");
-            document.getElementById(active).style.backgroundColor="orange";
+            document.getElementById(active).style.backgroundColor="#ED6206";
+            document.getElementById(active).style.color="#fff";
+            document.getElementById(active).style.boxShadow="none";
+            ;
             window.localStorage.setItem("totalCat",totalCat);
          }
          

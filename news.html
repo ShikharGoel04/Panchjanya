@@ -6,7 +6,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="./js/news.js"></script>
-  <script src="./js/number.js"></script>
   <script src="./js/baseUrl.js"></script>
   <script src="./js/authenticate.js"></script>
   <script src="./js/newsView.js"></script>
@@ -22,9 +21,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/08e3572502.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="./css/loader.css">
   <link rel="stylesheet" href="./css/styles.css">
   <link rel="stylesheet" href="./css/newloader.css">
+  <link rel="stylesheet" href="./css/tw.css">
+  <script src="./js/tw.js"></script>
+  <link rel="stylesheet" href="./css/news.css">
   <script>
     window.onload = function () {
       newsDisp();
@@ -32,99 +33,12 @@
   </script>
 
 
-  <style>
-    .responsive {
-      width: 100%;
-    }
-
-    @media screen and (max-width: 500px) {
-      .resp {
-        width: 100%;
-      }
-    }
-
-    @media screen and (min-width: 0px) and (max-width: 935px) {
-      .mobile {
-        display: block;
-      }
-
-      /* show it on small screens */
-      #computer {
-        display: none;
-      }
-    }
-
-    @media screen and (min-width: 935px) {
-      .mobile {
-        display: none;
-      }
-
-      /* hide it elsewhere */
-      #computer {
-        display: block;
-      }
-    }
-
-    .nav-link {
-      color: black !important;
-    }
-
-    .navbar {
-      background-color: orange !important;
-
-    }
-
-    .button1 {
-      background-color: #c5c3c3;
-      width: 100%;
-      color: white;
-      font-weight: 600;
-    }
-
-    .content {
-      font-family: 'Baloo 2', cursive;
-      font-size: 1.5rem;
-      text-align: justify;
-    }
-
-    .category1 {
-      background-color: orange;
-      width: 60%;
-      margin: auto;
-
-      font-size: 2rem;
-      font-weight: 600;
-      color: white !important;
-    }
-
-    .pagination1 {
-      padding: 15px;
-      font-size: 18px;
-    }
-
-    .body {
-      padding-right: 0px;
-    }
-
-    .fontt {
-      font-family: 'Poppins', sans-serif;
-      font-size: 2.6rem;
-
-      color: #191816;
-
-    }
-
-    .rc {
-      border-radius: 25px;
-    }
-  </style>
+ 
 </head>
 
 <body style="padding-right: 0px;">
 
-  <!-- <div class="jumbotron text-center" style="margin-bottom:0" style="height: 100px;">
-  <img class="resp" src="https://www.organiser.org//Encyc/2019/2/7/organiser-logo.png">
-</div> -->
+
 
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <a class="navbar-brand" style="padding-top: 0; height: 100%; padding-bottom: 2px;" href="index.html"><img
@@ -282,7 +196,7 @@
 
   <div class="row m-1 justify-content-between">
     <div class="col-sm-2 mx-2" id="computer">
-      <h1 class="font-weight-bold" style="font-size: 3rem;text-align: center; font-family: 'Poppins';">
+      <h1 class="font-weight-bold" style="font-size: 3rem;text-align: center; font-family: 'Poppins'; color:#a5a5a5;">
         Categories
       </h1>
       <div class="content4">
@@ -297,6 +211,29 @@
 
     </div>
   </div>
+
+
+
+  <!-- twitter ball -->
+  <div>
+    <script type="text/javascript" src="./js/jquery-ui.min.js"></script>
+
+    <div class="feed_icon shadow-lg twitt bounce2" id="tw" onclick="tw()">
+      <i class="fa fa-twitter"></i>
+    </div>
+
+    <div class="feed_close shadow close" style="right: 350px; display: none;" onclick="closee()">
+      <i class="fa fa-times"></i>
+    </div>
+ 
+    <div class="feed_container shadow-lg yes" style="right: 0px; display: none;" >
+      <div>
+        <a class="twitter-timeline" href="https://twitter.com/eOrganiser?ref_src=twsrc%5Etfw">Tweets by eOrganiser</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      </div>
+    </div>
+
+
+  <!-- twitter ball -->
 
 
   <!-- pagination -->
