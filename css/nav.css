@@ -13,3 +13,11 @@
     background-color: orange !important;
     
   }
+  .btn.focus, .btn:focus {
+
+    box-shadow:none i !important;
+}
+.btn.active, .btn:active {
+    -webkit-box-shadow:none !important; 
+    box-shadow:none !important;
+}
