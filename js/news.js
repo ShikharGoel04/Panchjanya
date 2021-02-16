@@ -28,6 +28,7 @@ function newsDisp(){
                 if(localStorage.getItem("start")===null)
                 {
                     window.localStorage.setItem("start",0);
+                    window.localStorage.setItem("curr",1);
                 }
                  
               const start=parseInt(localStorage.getItem("start"));
@@ -254,15 +255,15 @@ function newsDisp(){
         //  }
          if(localStorage.getItem("newscategory")=="All")
          {
-            document.getElementById(allid1).style.backgroundColor="#ED6206";
-            document.getElementById(allid2).style.backgroundColor="#ED6206";
+            document.getElementById(allid1).style.backgroundColor="#ffa500";
+            document.getElementById(allid2).style.backgroundColor="#ffa500";
             document.getElementById(allid1).style.color="#fff";
             document.getElementById(allid1).style.boxShadow="none !important";
          }
          else
          {
             var active=localStorage.getItem("active");
-            document.getElementById(active).style.backgroundColor="#ED6206";
+            document.getElementById(active).style.backgroundColor="#ffa500";
             document.getElementById(active).style.color="#fff";
             document.getElementById(active).style.boxShadow="none";
             ;
