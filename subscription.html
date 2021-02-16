@@ -100,38 +100,49 @@ padding-right: 10px;
   <img class="resp" src="https://www.organiser.org//Encyc/2019/2/7/organiser-logo.png">
 </div> -->
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-  <a class="navbar-brand" style="padding-top: 0; height: 100%; padding-bottom: 2px;" href="index.html"><img
-    src="./images/panchlogo.svg" class="img-responsive" height="90px"></a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link btn" onclick="subscription()" ><i class="fas fa-user-circle"></i> SUBCRIPTION</a>
-      </li>   
-      <li class="nav-item">
-        <a class="nav-link btn" onclick="news()"><i class="far fa-newspaper"> </i> NEWS</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link btn" onclick="magazine()"><i class="fas fa-book-reader"></i> E-MAGAZINE</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link btn" onclick="vid()" ><i class="fas fa-play"></i> VIDEOS</a>
-      </li>   
-       
-    </ul>
-  </div>  
-<div class="collapse navbar-collapse" id="collapsibleNavbar">
-  <ul style="float:right;" class="nav navbar-nav topnav-right" >
-    <li class="nav-item">
-    <!-- <a id="login" data-toggle="modal"  data-target="#myModal" class="nav-link btn-mag btn" onclick="number()" style="margin-right: 10px;margin-left: 15px;">Login</a> -->
+<link rel="stylesheet" href="./css/nav.css">
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" style="padding-top: 0; height: 100%; padding-bottom: 2px;" href="index.html"><img
+        src="./images/panchlogo.svg" class="img-responsive" height="90px"></a>
+    <!-- <a class="navbar-brand" style="padding-top: 0px;" href="index.html"><img src="./images/Logo_Panchjanya_-min (1).png"
+        class="img-responsive" height="70px" width="50px"></a> -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul style="float:right;" style="float:right" class="nav navbar-nav topnav-right" >
+  
+    <li class="nav-item mx-4">
+      <a class="nav-link btn" onclick="news()">
+        <div class="m-0 p-0"><img src="./images/home.svg" class="navimg"> <span class="navtext"> HOME</span>
+        </div>
+      </a>
+    </li>
+    <li class="nav-item mx-4">
+      <a class="nav-link btn" onclick="magazine()">
+        <div class="m-0 p-0"><img src="./images/emag.svg" class="navimg"> <span class="navtext"> E-MAGAZINE</span>
+        </div> 
+      </a>
+    </li>
+    <li class="nav-item mx-4">
+      <a class="nav-link btn" onclick="vid()" >
+        <div class="m-0 p-0"><img src="./images/video.svg" class="navimg"> <span class="navtext"> VIDEOS</span>
+        </div> 
+      </a>
+    </li>   
+    <li class="nav-item mx-4">
+      <a class="nav-link btn" onclick="subscription()" >
+        <div class="m-0 p-0"><img src="./images/profile.svg" class="navimg"> <span class="navtext"> PROFILE</span>
+        </div>
+      </a>
+  </li>   
+  <li class="nav-item mx-4">
     <a id="logout"  class="nav-link btn-mag btn" onclick="logout()" style="margin-right: 10px;margin-left: 15px;">Logout</a>
   </li>
-</ul>  
-</div>
-</nav>
+    </ul>  
+    </div>
+  </nav>
 
 <!-- loader -->
 
