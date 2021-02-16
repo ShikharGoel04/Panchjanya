@@ -87,3 +87,18 @@
     background-color: #f7f7f7;
     color: #616161;
   }
+
+  .page-item a{
+    font-size: 1.75rem;
+    height: 100% !important;
+  }
+  .pagination>li>a{
+    color: #ed6206;
+  }
+  .pagination>li>a:focus, .pagination>li>a:hover, .pagination>li>span:focus, .pagination>li>span:hover{
+    color: #ed6206;
+  }
+  .page-link:focus {
+
+    box-shadow: 0 0 0 0.2rem rgb(237 98 6 / 25%);
+}

@@ -55,6 +55,7 @@ function newsDisp(){
                 
                  const count=parseInt(data["count"]);
                  const next=parseInt(data["next"]);
+                 pagination(count);
                  if((next<count)&&(next>=8))
                  {
                     document.getElementById("next").style.display='block';
@@ -164,6 +165,7 @@ function newsDisp(){
         {
                 window.localStorage.setItem("active",idd.id);
                 window.localStorage.setItem("start",0);
+                window.localStorage.setItem("curr",1);
                 window.localStorage.setItem("newscategory",idd.innerText);
                 window.location="news.html";
         }
@@ -281,6 +283,7 @@ function newsDisp(){
         function next()
         {
             window.localStorage.setItem("start",parseInt(localStorage.getItem("start"))+4);
+            window.localStorage.setItem("curr",parseInt(localStorage.getItem("curr"))+1);
 
         }
       
@@ -290,6 +293,7 @@ function newsDisp(){
 
             var start=localStorage.getItem("start");
             window.localStorage.setItem("start",parseInt(start)-4);
+            window.localStorage.setItem("curr",parseInt(localStorage.getItem("curr"))-1);
         }
 
       
