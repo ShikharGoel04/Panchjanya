@@ -1,27 +1,20 @@
 
 videos display design (limited character passing in description)
 
-magazine view  // we solved this using adobe api
+magazine view
 
-remove console.log // was already solved 
+remove console.log
 
  
 
 api change
 
-new homepage // done acc to dinesh 
+new homepage
 
-magzine design  //done
- 
+magzine design
+
 thi is a test
  
- 
- 
- 
- 
- 
- 
- overall a fail project
 
 
 
